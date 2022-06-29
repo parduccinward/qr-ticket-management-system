@@ -6,10 +6,10 @@ The project is built with the following features:
 
 ## Backend
 
-### Technologies: Node.js, Express.js and MongoDb
+### Technologies: Node.js, Express.js and MongoDB
 
-1. Jwt authentication token
-2. Generic Crud Api (Create/Read/Update/Delete)
+1. Auth by Jwt json web token
+2. Generic Crud API (Create/Read/Update/Delete)
 3. Form Validation
 4. QR Generator
 
