@@ -1,6 +1,9 @@
 require("dotenv").config()
 
 const express = require('express');
+const partyRoutes = require("./routes/parties");
+
+
 
 const app = express();
 
@@ -10,9 +13,7 @@ app.use((req, res, next) => {
 })
 
 
-app.get("/",(req,res)=>{
-    res.json({mssg:"Welcome to the app"})
-})
+app.use("/api/parties",partyRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log("listening on port",process.env.PORT);
