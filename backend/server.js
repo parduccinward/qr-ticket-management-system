@@ -2,6 +2,7 @@ require("dotenv").config()
 
 const express = require('express');
 const partyRoutes = require("./routes/parties");
+const salespersonRoutes = require("./routes/salespersons");
 
 
 
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 
 
 app.use("/api/parties",partyRoutes);
+app.use("/api/salespersons", salespersonRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log("listening on port",process.env.PORT);
