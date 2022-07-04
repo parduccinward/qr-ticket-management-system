@@ -1,10 +1,9 @@
-const Pool = require("pg");
+const {Pool} = require("pg");
 
 const pool = new Pool();
 
-pool.query('SELECT NOW()', (err, res) => {
-    console.log(err, res)
-    pool.end()
-  })
-
-  module.exports = pool;
+module.exports = {
+    query: (text, params, callback) => {
+      return pool.query(text, params, callback)
+    },
+}
