@@ -1,26 +1,23 @@
 const express = require("express");
-const pool = require("../models/db");
+
+const {
+    getSalespersons,
+    getSalesperson,
+    createSalesperson,
+    deleteSalesperson,
+    updateSalesperson
+} = require("../controllers/salespersonController");
 
 const router = express.Router();
 
-router.get("/",(req,res) => {
-    res.json({mssg:"GET all salespersons"});
-})
+router.get("/",getSalespersons);
 
-router.get("/:id", (req,res) => {
-    res.json({mssg: "GET a single salesperson"});
-})
+router.get("/:id",getSalesperson);
 
-router.post("/",(req,res) => {
-    res.json({mssg:"POST a new salesperson"});
-})
+router.post("/",createSalesperson);
 
-router.delete("/:id", (req,res) => {
-    res.json({mssg: "DELETE a salesperson"});
-})
+router.delete("/:id",deleteSalesperson);
 
-router.patch("/:id", (req,res) =>{
-    res.json({mssg: "UPDATE a salesperson"});
-})
+router.put("/:id",updateSalesperson);
 
 module.exports = router;
