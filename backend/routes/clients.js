@@ -1,5 +1,5 @@
 const express = require("express");
-const pool = require("../db/db");
+const pool = require("../models/db");
 
 const router = express.Router();
 
