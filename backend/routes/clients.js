@@ -1,15 +1,23 @@
 const express = require("express");
-const pool = require("../models/db");
+
+const {
+    getClients,
+    getClient,
+    createClient,
+    deleteClient,
+    updateClient
+} = require("../controllers/clientController");
 
 const router = express.Router();
 
-router.get("/",(req,res) => {
-    res.json({mssg:"GET all clients"});
-})
+router.get("/",getClients);
 
-router.get("/:id", (req,res) => {
-    res.json({mssg:"GET a single client"});
-})
+router.get("/:id",getClient);
 
+router.post("/", createClient);
+
+router.delete("/:id",deleteClient);
+
+router.put("/:id",updateClient);
 
 module.exports = router;
