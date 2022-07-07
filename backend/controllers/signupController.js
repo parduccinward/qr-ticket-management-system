@@ -6,8 +6,8 @@ const registerUser  =  async (req, res) => {
     const { username, password } =  req.body;
     try {
         const  user  =  await pool.query(`SELECT * FROM users WHERE username= $1;`, [username]);
-        const  anyUsers  =  user.rows;
-        if (anyUsers.length  ==  0) {
+        const  anyUser  =  user.rows;
+        if (anyUser.length  ==  0) {
             bcrypt.hash(password, 10, (err, hash) => {
                 if (err){
                     res.status(err).json({
@@ -23,7 +23,7 @@ const registerUser  =  async (req, res) => {
                 [user.username, user.password], (err) => {
                 if (!err) {
                     res.status(200).send({ message: 'User added to database, not verified' });
-                    const  token  = jwt.sign( //Signing a jwt token
+                    const  token  = jwt.sign(
                     {
                         username: user.username
                     },
