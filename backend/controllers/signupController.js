@@ -10,9 +10,7 @@ const registerUser = async (req, res) => {
         if (anyUser.length == 0) {
             bcrypt.hash(password, 10, (err, hash) => {
                 if (err){
-                    res.status(err).json({
-                        error: "Server error",
-                        });
+                    res.status(err).json({error: "Server error"});
                 }
                 const user = {
                     username,
@@ -32,21 +30,18 @@ const registerUser = async (req, res) => {
                 }
                 else {
                     console.error(err);
-                    return res.status(500).json({
-                        error: "Database error"
-                    })
+                    return res.status(500).json({error: "Database error"})
                 }
-                })
+                });
             });
         }
         else {
-            return res.status(400).json({
-            error: "Username already exists!",
-            });
+            return res.status(400).json({error: "Username already exists!"});
         }
     }
     catch (err) {
         console.error(err.message);
+        res.status(500).json({error: "An error ocurred while signing up. Please try again"});
     };
 }
 
