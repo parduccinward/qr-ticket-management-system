@@ -5,9 +5,9 @@ const jwt = require("jsonwebtoken");
 const loginUser = async (req, res) => {
     const {username, password} = req.body;
     try {
-        const user = await pool.query("SELECT * FROM users WHERE username=$1",[username]);
-        const anyUser = user.rows;
-        if(anyUser.length !== 0){
+        const query = await pool.query("SELECT * FROM users WHERE username=$1",[username]);
+        const user = query.rows;
+        if(user.length !== 0){
             bcrypt.compare(password, user[0].password, (err, passwordsMatch) => {
                 if(err){
                     res.status(500).json({error: "Server error"});   
