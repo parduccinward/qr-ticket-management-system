@@ -1,29 +1,29 @@
-const  bcrypt  =  require("bcrypt");
-const  pool  =  require("../models/db");
-const  jwt  =  require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const pool = require("../models/db");
+const jwt = require("jsonwebtoken");
 
-const registerUser  =  async (req, res) => {
-    const { username, password } =  req.body;
+const registerUser = async (req, res) => {
+    const {username, password} = req.body;
     try {
-        const  user  =  await pool.query(`SELECT * FROM users WHERE username= $1;`, [username]);
-        const  anyUser  =  user.rows;
-        if (anyUser.length  ==  0) {
+        const user = await pool.query("SELECT * FROM users WHERE username= $1", [username]);
+        const anyUser = user.rows;
+        if (anyUser.length == 0) {
             bcrypt.hash(password, 10, (err, hash) => {
                 if (err){
                     res.status(err).json({
                         error: "Server error",
                         });
                 }
-                const  user  = {
+                const user = {
                     username,
                     password: hash
                 };
 
-                pool.query(`INSERT INTO users (username, password) VALUES ($1,$2);`, 
+                pool.query("INSERT INTO users (username, password) VALUES ($1,$2)", 
                 [user.username, user.password], (err) => {
                 if (!err) {
-                    res.status(200).send({ message: 'User added to database, not verified' });
-                    const  token  = jwt.sign(
+                    res.status(200).send({ message: "User added to database, not verified" });
+                    const token = jwt.sign(
                     {
                         username: user.username
                     },
@@ -32,7 +32,7 @@ const registerUser  =  async (req, res) => {
                 }
                 else {
                     console.error(err);
-                    return  res.status(500).json({
+                    return res.status(500).json({
                         error: "Database error"
                     })
                 }
@@ -40,7 +40,7 @@ const registerUser  =  async (req, res) => {
             });
         }
         else {
-            return  res.status(400).json({
+            return res.status(400).json({
             error: "Username already exists!",
             });
         }
