@@ -14,7 +14,11 @@ html {
 
 body {
     min-height: 100vh;
-    background-color: dodgerblue;
+    background-color: #5E548E;
+}
+
+h1 {
+    align-self: center;
 }
 
 .App {
