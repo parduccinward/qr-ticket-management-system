@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 app.use("/api/parties",partyRoutes);
 app.use("/api/salespersons", salespersonRoutes);
 app.use("/api/clients",clientRoutes);
-app.use("/api/users",userRoutes);
+app.use("/api/auth",userRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log("listening on port",process.env.PORT);
