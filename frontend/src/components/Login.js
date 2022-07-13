@@ -55,10 +55,10 @@ const Login = () => {
         <>
         {success ? (
             <section class="login-container">
-                <h1>Te encuentras autenticado!</h1>
+                <h1>Bienvenido!</h1>
                 <br />
                 <p>
-                    {/* <a href="#">Ir al Panel</a> */}
+                    <a href="#">Ir al Panel</a>
                 </p>
             </section>
         ) : (
