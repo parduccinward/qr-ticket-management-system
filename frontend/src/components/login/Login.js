@@ -1,5 +1,7 @@
 import {useRef, useState, useEffect, useContext} from "react";
 import AuthContext from "../../context/AuthProvider";
+import Navbar from '../navbar/Navbar';
+import "./Login.css";
 
 import axios from "../../api/axios";
 const LOGIN_URL = "/api/auth/login";
@@ -54,13 +56,7 @@ const Login = () => {
     return(
         <>
         {success ? (
-            <section class="login-container">
-                <h1>Bienvenido!</h1>
-                <br />
-                <p>
-                    <a href="#">Ir al Panel</a>
-                </p>
-            </section>
+            <Navbar/>
         ) : (
         <section class="login-container">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
