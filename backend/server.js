@@ -2,6 +2,7 @@ require("dotenv").config()
 
 const express = require('express');
 const cors = require('cors');
+const verifyJWT = require('./middleware/verifyJWT');
 const partyRoutes = require("./routes/parties");
 const salespersonRoutes = require("./routes/salespersons");
 const clientRoutes = require("./routes/clients");
@@ -22,6 +23,8 @@ app.use("/api/parties",partyRoutes);
 app.use("/api/salespersons", salespersonRoutes);
 app.use("/api/clients",clientRoutes);
 app.use("/api/auth",userRoutes);
+
+app.use(verifyJWT);
 
 app.listen(process.env.PORT, () => {
     console.log("listening on port",process.env.PORT);
