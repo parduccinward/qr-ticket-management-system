@@ -1,11 +1,16 @@
-import {useRef, useState, useEffect} from "react";
+import {useRef, useState, useEffect, useContext} from "react";
+import AuthContext from "../context/AuthProvider";
+
+import axios from "../api/axios";
+const LOGIN_URL = "/api/auth/login";
 
 const Login = () => {
+    const {setAuth} = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
 
-    const[user, setUser] = useState("");
-    const[pwd, setPwd] = useState("");
+    const[username, setUser] = useState("");
+    const[password, setPwd] = useState("");
     const[errMsg, setErrMsg] = useState("");
     const[success, setSuccess] = useState(false);
 
@@ -15,10 +20,37 @@ const Login = () => {
 
     useEffect(() => {
         setErrMsg("");
-    },[user,pwd])
+    },[username,password])
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
+        try {
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({username, password}),
+                {
+                    headers: { "Content-type": "application/json"},
+                    withCredentials: true
+                }
+                );
+            console.log(JSON.stringify(response?.data));
+            console.log(JSON.stringify(response));
+            const token = response?.data?.token;
+            setAuth({username, password, token});
+            setUser("");
+            setPwd("");
+            setSuccess(true);
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing Username or Password');
+            } else if (err.response?.status === 401) {
+                setErrMsg('Unauthorized');
+            } else {
+                setErrMsg('Login Failed');
+            }
+            errRef.current.focus();
+        }
     }
 
     return(
@@ -28,7 +60,7 @@ const Login = () => {
                 <h1>Te encuentras autenticado!</h1>
                 <br />
                 <p>
-                    <a href="#">Ir al Panel</a>
+                    {/* <a href="#">Ir al Panel</a> */}
                 </p>
             </section>
         ) : (
@@ -43,7 +75,7 @@ const Login = () => {
                     ref={userRef}
                     autoComplete="off"
                     onChange={(e) => setUser(e.target.value)}
-                    value={user}
+                    value={username}
                     required
                 />
                 <label htmlFor="password">Contraseña:</label>
@@ -51,7 +83,7 @@ const Login = () => {
                     type="password"
                     id="password"
                     onChange={(e) => setPwd(e.target.value)}
-                    value={pwd}
+                    value={password}
                     required
                 />
                 <button>Ingresar</button>
