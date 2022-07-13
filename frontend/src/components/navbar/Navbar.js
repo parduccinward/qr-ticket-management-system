@@ -1,13 +1,9 @@
 import react from "react";
-
+import "./Navbar.css"
 function Navbar(){
     return(
         <>
-            <div className="navbar">
-                <Link to="#" className="menu-bars">
-                
-                </Link>
-            </div>
+            <h2>Boenas</h2>
         </>
     )
 }
