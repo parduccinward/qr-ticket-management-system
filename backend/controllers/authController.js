@@ -16,10 +16,9 @@ const loginUser = async (req, res) => {
                         {
                             username:username
                         },
-                        process.env.SECRET_KEY
+                        process.env.ACCESS_TOKEN_SECRET
                     );
                     res.status(200).json({
-                        message:"User signed in successfully",
                         token: token
                     });
                 }else{
@@ -58,7 +57,7 @@ const registerUser = async (req, res) => {
                     {
                         username: user.username
                     },
-                    process.env.SECRET_KEY
+                    process.env.ACCESS_TOKEN_SECRET
                     );
                 }
                 else {
