@@ -56,7 +56,7 @@ const Login = () => {
     return(
         <>
         {success ? (
-            <section>
+            <section class="login-container">
                 <h1>Te encuentras autenticado!</h1>
                 <br />
                 <p>
@@ -64,11 +64,11 @@ const Login = () => {
                 </p>
             </section>
         ) : (
-        <section>
+        <section class="login-container">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Inti Raymi Admin</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Usuario:</label>
+            <form class="login-form"onSubmit={handleSubmit}>
+                <label class="login-label" htmlFor="username">Usuario:</label>
                 <input 
                     type="text"
                     id="username"
@@ -78,7 +78,7 @@ const Login = () => {
                     value={username}
                     required
                 />
-                <label htmlFor="password">Contraseña:</label>
+                <label class="login-label" htmlFor="password">Contraseña:</label>
                 <input 
                     type="password"
                     id="password"
@@ -86,7 +86,7 @@ const Login = () => {
                     value={password}
                     required
                 />
-                <button>Ingresar</button>
+                <button class="login-btn">Ingresar</button>
             </form>
         </section>
         )}

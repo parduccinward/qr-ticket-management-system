@@ -6,31 +6,28 @@
     box-sizing: border-box;
 }
 
-html {
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
-    color: #fff;
-}
-
 body {
     min-height: 100vh;
-    background-color: #5E548E;
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
 }
 
-h1 {
+.login-container h1 {
     align-self: center;
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; 
-  padding: 1rem 0.5rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    padding: 1rem 0.5rem;
 }
 
-section {
+.login-container {
     width: 100%;
     max-width: 420px;
     min-height: 400px;
@@ -39,9 +36,10 @@ section {
     justify-content: flex-start;
     padding: 1rem;
     background-color: rgba(0,0,0,0.4);
+    border-radius: 10px;
 }
 
-form {
+.login-form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -53,23 +51,34 @@ a, a:visited {
     color: #fff;
 }
 
-input[type="text"],
-input[type="password"],
-button,
-textarea {
+#username,
+#password,
+.login-btn {
   font-family: 'Nunito', sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   padding: 0.25rem;
   border-radius: 0.5rem;
 }
 
-label,
-button {
-  margin-top: 1rem;
+.login-label,
+.login-btn {
+  margin-top: 3rem;
 }
 
-button {
-  padding: 0.5rem;
+.login-btn {
+    padding: 0.6rem;
+    width: 70%;
+    align-self: center;
+    border-radius: 20px;
+    background-color: rgb(210, 220, 221);
+    border:none;
+    color:#000;
+}
+.login-btn:hover{
+    background-color: rgb(183, 191, 191);    
+    color:#000;
+    transition:0.6s;
+    cursor: pointer;
 }
 
 .instructions {
@@ -111,8 +120,4 @@ button {
     font-weight: bold;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
-}
-
-.line {
-    display: inline-block;
 }
