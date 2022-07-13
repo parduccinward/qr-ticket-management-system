@@ -41,13 +41,11 @@ const Login = () => {
             setSuccess(true);
         } catch (err) {
             if (!err?.response) {
-                setErrMsg('No Server Response');
+                setErrMsg('Servidor sin respuesta');
             } else if (err.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
+                setErrMsg('Usuario o contraseña incorrectos');
             } else {
-                setErrMsg('Login Failed');
+                setErrMsg('Login fallido');
             }
             errRef.current.focus();
         }

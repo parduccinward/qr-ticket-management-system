@@ -70,12 +70,12 @@ a, a:visited {
     width: 70%;
     align-self: center;
     border-radius: 20px;
-    background-color: rgb(210, 220, 221);
+    background-color: rgb(243, 243, 243);
     border:none;
     color:#000;
 }
 .login-btn:hover{
-    background-color: rgb(183, 191, 191);    
+    background-color: rgb(215, 215, 215);    
     color:#000;
     transition:0.6s;
     cursor: pointer;
