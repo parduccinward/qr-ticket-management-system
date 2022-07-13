@@ -1,6 +1,7 @@
 require("dotenv").config()
 
 const express = require('express');
+const cors = require('cors');
 const partyRoutes = require("./routes/parties");
 const salespersonRoutes = require("./routes/salespersons");
 const clientRoutes = require("./routes/clients");
@@ -9,7 +10,7 @@ const userRoutes = require("./routes/users");
 
 const app = express();
 
-
+app.use(cors({credentials: true, origin: process.env.FRONTEND_ORIGIN}));
 app.use(express.json());
 app.use((req, res, next) => {
     console.log(req.path, req.method);
