@@ -2,6 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import {Link} from 'react-router-dom'
 import { NavbarData } from './NavbarData';
+import * as RiIcons from 'react-icons/ri';
 
 function Navbar(){
     return(
@@ -18,6 +19,12 @@ function Navbar(){
                 </li>
               );
             })}
+              <li className= "logout-text">
+                <Link to="/logout">
+                <RiIcons.RiLogoutBoxRLine />
+                <span>Logout</span>
+                </Link>
+              </li>
             </ul>
         </nav>
         </>

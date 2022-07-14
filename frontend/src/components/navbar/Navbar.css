@@ -20,7 +20,8 @@ body{
 }
 
 
-.nav-text {
+.nav-text,
+.logout-text {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -30,7 +31,8 @@ body{
     font-family: "Lato", sans-serif;
 }
 
-.nav-text a {
+.nav-text a,
+.logout-text a {
     text-decoration: none;
     color: #f5f5f5;
     font-size: 1.25rem;
@@ -44,6 +46,14 @@ body{
 
 .nav-text a:hover {
     background-color: #1a83ff;
+}
+
+.logout-text a:hover {
+    background-color: #E55640
+}
+
+.logout-text {
+    margin-top:90px;
 }
 
 span {
