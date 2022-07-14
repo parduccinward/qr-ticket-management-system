@@ -1,6 +1,10 @@
 import {useRef, useState, useEffect, useContext} from "react";
 import AuthContext from "../../context/AuthProvider";
-import Navbar from '../navbar/Navbar';
+import Navbar from "../navbar/Navbar";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Parties from "../../pages/Parties";
+import Salespersons from "../../pages/Salespersons";
+import Clients from "../../pages/Clients";
 import "./Login.css";
 
 import axios from "../../api/axios";
@@ -56,7 +60,14 @@ const Login = () => {
     return(
         <>
         {success ? (
+            <Router>
             <Navbar/>
+                <Routes>
+                    <Route path="/parties" element={<Parties/>}/>
+                    <Route path="/salespersons" element={<Salespersons/>}/>
+                    <Route path="/clients" element={<Clients/>}/>
+                </Routes>
+            </Router>
         ) : (
         <div className="login-center">
         <section className="login-container">
