@@ -1,21 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-* {
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    min-height: 100vh;
-    background: linear-gradient(120deg, #2980b9, #8e44ad);
 }
 
 .login-container h1 {
     align-self: center;
 }
 
-.App {
+.login-center {
     font-family: 'Nunito', sans-serif;
     font-size: 22px;
     color: #fff;
@@ -23,7 +18,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; 
+    min-height: 100vh;
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
     padding: 1rem 0.5rem;
 }
 
@@ -45,10 +41,6 @@ body {
     justify-content: space-evenly;
     flex-grow: 1;
     padding-bottom: 1rem;
-}
-
-a, a:visited {
-    color: #fff;
 }
 
 #username,
@@ -89,10 +81,6 @@ a, a:visited {
     padding: 0.25rem;
     position: relative;
     bottom: -10px;
-}
-
-.instructions > svg {
-    margin-right: 0.25rem;
 }
 
 .offscreen {

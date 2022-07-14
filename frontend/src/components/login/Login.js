@@ -58,6 +58,7 @@ const Login = () => {
         {success ? (
             <Navbar/>
         ) : (
+        <div class="login-center">
         <section class="login-container">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Inti Raymi Admin</h1>
@@ -71,7 +72,7 @@ const Login = () => {
                     onChange={(e) => setUser(e.target.value)}
                     value={username}
                     required
-                />
+                    />
                 <label class="login-label" htmlFor="password">Contraseña:</label>
                 <input 
                     type="password"
@@ -79,10 +80,11 @@ const Login = () => {
                     onChange={(e) => setPwd(e.target.value)}
                     value={password}
                     required
-                />
+                    />
                 <button class="login-btn">Ingresar</button>
             </form>
         </section>
+        </div>
         )}
         </>
     )
