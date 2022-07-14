@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./pages.css";
 function Clients(){
     return(
         <div className="clients">

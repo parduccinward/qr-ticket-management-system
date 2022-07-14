@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.parties h1,
+.clients h1, 
+.salespersons h1{
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    font-size:2rem;
+    font-family: "Lato", sans-serif;
+}

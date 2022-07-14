@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./pages.css";
 function Salespersons(){
     return(
         <div className="salespersons">
