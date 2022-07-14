@@ -58,12 +58,12 @@ const Login = () => {
         {success ? (
             <Navbar/>
         ) : (
-        <div class="login-center">
-        <section class="login-container">
+        <div className="login-center">
+        <section className="login-container">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Inti Raymi Admin</h1>
-            <form class="login-form"onSubmit={handleSubmit}>
-                <label class="login-label" htmlFor="username">Usuario:</label>
+            <form className="login-form"onSubmit={handleSubmit}>
+                <label className="login-label" htmlFor="username">Usuario:</label>
                 <input 
                     type="text"
                     id="username"
@@ -73,7 +73,7 @@ const Login = () => {
                     value={username}
                     required
                     />
-                <label class="login-label" htmlFor="password">Contraseña:</label>
+                <label className="login-label" htmlFor="password">Contraseña:</label>
                 <input 
                     type="password"
                     id="password"
@@ -81,7 +81,7 @@ const Login = () => {
                     value={password}
                     required
                     />
-                <button class="login-btn">Ingresar</button>
+                <button className="login-btn">Ingresar</button>
             </form>
         </section>
         </div>
