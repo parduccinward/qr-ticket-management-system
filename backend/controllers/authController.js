@@ -18,9 +18,13 @@ const loginUser = async (req, res) => {
                         },
                         process.env.ACCESS_TOKEN_SECRET
                     );
-                    res.status(200).json({
-                        token: token
-                    });
+                    return res.cookie("jwt", token, {
+                        httpOnly: true,
+                        expires: new Date(Date.now() + 900000)
+                    })
+                    .status(200)
+                    .json({message: "Login successful!"})
+
                 }else{
                     res.status(400).json({error: "The password entered is incorrect."});
                 }
@@ -76,6 +80,7 @@ const registerUser = async (req, res) => {
         res.status(500).json({error: "An error ocurred while signing up. Please try again"});
     };
 }
+
 
 module.exports = {
     loginUser,

@@ -3,6 +3,7 @@ require("dotenv").config()
 const express = require('express');
 const cors = require('cors');
 const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require("cookie-parser");
 const partyRoutes = require("./routes/parties");
 const salespersonRoutes = require("./routes/salespersons");
 const clientRoutes = require("./routes/clients");
@@ -25,6 +26,7 @@ app.use("/api/clients",clientRoutes);
 app.use("/api/auth",userRoutes);
 
 app.use(verifyJWT);
+app.use(cookieParser());
 
 app.listen(process.env.PORT, () => {
     console.log("listening on port",process.env.PORT);
