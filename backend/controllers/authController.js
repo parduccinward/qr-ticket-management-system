@@ -96,6 +96,11 @@ const refreshToken = (req, res) => {
     })
 }
 
+const logoutUser = (req, res) => {
+    const refreshToken = req.body.token;
+    refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
+    res.status(200).json("You logged out successfully");
+}
 
 
 
@@ -103,5 +108,6 @@ const refreshToken = (req, res) => {
 module.exports = {
     loginUser,
     registerUser,
+    logoutUser,
     refreshToken
 };
