@@ -18,13 +18,9 @@ const loginUser = async (req, res) => {
                         },
                         process.env.ACCESS_TOKEN_SECRET
                     );
-                    return res.cookie("jwt", token, {
-                        httpOnly: true,
-                        expires: new Date(Date.now() + 900000)
-                    })
-                    .status(200)
-                    .json({message: "Login successful!"})
-
+                    res.status(200).json({
+                        token: token
+                    });
                 }else{
                     res.status(400).json({error: "The password entered is incorrect."});
                 }
