@@ -20,12 +20,11 @@ app.use((req, res, next) => {
 })
 
 
-app.use("/api/parties",partyRoutes);
-app.use("/api/salespersons", salespersonRoutes);
-app.use("/api/clients",clientRoutes);
+app.use("/api/parties",verifyJWT, partyRoutes);
+app.use("/api/salespersons",verifyJWT, salespersonRoutes);
+app.use("/api/clients",verifyJWT, clientRoutes);
 app.use("/api/auth",userRoutes);
 
-app.use(verifyJWT);
 app.use(cookieParser());
 
 app.listen(process.env.PORT, () => {

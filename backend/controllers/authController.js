@@ -12,14 +12,13 @@ const loginUser = async (req, res) => {
                 if(err){
                     res.status(500).json({error: "Server error"});   
                 } else if(passwordsMatch === true){
-                    const token = jwt.sign(
-                        {
-                            username:username
-                        },
-                        process.env.ACCESS_TOKEN_SECRET
-                    );
+                    const accessToken = jwt.sign({username:username},process.env.ACCESS_TOKEN_SECRET,{expiresIn: "15m"});
+                    const refreshToken = jwt.sign({username:username},process.env.REFRESH_TOKEN_SECRET);
+                    refreshTokens.push(refreshToken);
                     res.status(200).json({
-                        token: token
+                        username:username,
+                        accessToken: accessToken,
+                        refreshToken: refreshToken
                     });
                 }else{
                     res.status(400).json({error: "The password entered is incorrect."});
@@ -53,12 +52,6 @@ const registerUser = async (req, res) => {
                 [user.username, user.password], (err) => {
                 if (!err) {
                     res.status(200).send({ message: "User added to database, not verified" });
-                    const token = jwt.sign(
-                    {
-                        username: user.username
-                    },
-                    process.env.ACCESS_TOKEN_SECRET
-                    );
                 }
                 else {
                     console.error(err);
@@ -77,8 +70,38 @@ const registerUser = async (req, res) => {
     };
 }
 
+let refreshTokens = [];
+
+const refreshToken = (req, res) => {
+    const refreshToken =req.body.token
+
+    if(!refreshToken) return res.status(401).json("You are not authenticated!")
+    if(!refreshTokens.includes(refreshToken)){
+        return res.status(403).json("Refresh token is not valid");
+    }
+    jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET, (err,username) => {
+        if(err) console.log(err);
+        refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
+
+        const newAccessToken = jwt.sign({username:username},process.env.ACCESS_TOKEN_SECRET,{expiresIn: "15m"});
+        const newRefreshToken = jwt.sign({username:username},process.env.REFRESH_TOKEN_SECRET);
+
+        refreshTokens.push(newRefreshToken);
+
+        res.status(200).json({
+            accessToken: newAccessToken,
+            newRefreshToken: newRefreshToken
+        })
+
+    })
+}
+
+
+
+
 
 module.exports = {
     loginUser,
-    registerUser
+    registerUser,
+    refreshToken
 };
