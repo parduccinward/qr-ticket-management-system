@@ -1,26 +1,23 @@
 import {useRef, useState, useEffect, useContext} from "react";
 import AuthContext from "../context/AuthProvider";
-import Navbar from "./Navbar";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Parties from "../pages/Parties";
-import Salespersons from "../pages/Salespersons";
-import Clients from "../pages/Clients";
+import { useNavigate, useLocation } from 'react-router-dom';
 import "./Login.css";
-import jwt_decode from "jwt-decode";
 
 import axios from "../api/axios";
 const LOGIN_URL = "/api/auth/login";
-const REFRESH_URL = "/api/auth/refresh";
 
 const Login = () => {
     const {setAuth} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
     const userRef = useRef();
     const errRef = useRef();
 
     const[username, setUser] = useState("");
     const[password, setPwd] = useState("");
     const[errMsg, setErrMsg] = useState("");
-    const[success, setSuccess] = useState(false);
 
     useEffect(() => {
         userRef.current.focus();
@@ -29,38 +26,6 @@ const Login = () => {
     useEffect(() => {
         setErrMsg("");
     },[username,password])
-
-    const refreshToken = async () => {
-        try {
-            const res = await axios.post(REFRESH_URL, {token:username.refreshToken});
-            setAuth({
-                username,
-                password,
-                accessToken: res.data.accessToken,
-                refreshToken: res.data.refreshToken
-            });
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
-    const axiosJWT = axios.create()
-
-    axiosJWT.interceptors.request.use(
-      async (config) => {
-        let currentDate = new Date();
-        const decodedToken = jwt_decode(username.accessToken);
-        if (decodedToken.exp * 1000 < currentDate.getTime()) {
-          const data = await refreshToken();
-          config.headers["authorization"] = "Bearer " + data.accessToken;
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -73,11 +38,10 @@ const Login = () => {
                 }
                 );
             const accessToken = response?.data?.accessToken;
-            const refreshToken = response?.data?.refreshToken;
-            setAuth({username, password, accessToken, refreshToken});
+            setAuth({username, password, accessToken});
             setUser("");
             setPwd("");
-            setSuccess(true);
+            navigate(from, { replace: true });
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('Servidor sin respuesta');
@@ -92,16 +56,6 @@ const Login = () => {
 
     return(
         <>
-        {success ? (
-            <Router>
-            <Navbar/>
-                <Routes>
-                    <Route path="/parties" element={<Parties/>}/>
-                    <Route path="/salespersons" element={<Salespersons/>}/>
-                    <Route path="/clients" element={<Clients/>}/>
-                </Routes>
-            </Router>
-        ) : (
         <div className="login-center">
         <section className="login-container">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
@@ -129,7 +83,6 @@ const Login = () => {
             </form>
         </section>
         </div>
-        )}
         </>
     )
 }
