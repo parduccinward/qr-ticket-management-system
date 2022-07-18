@@ -1,14 +1,14 @@
 import {useRef, useState, useEffect, useContext} from "react";
-import AuthContext from "../../context/AuthProvider";
-import Navbar from "../navbar/Navbar";
+import AuthContext from "../context/AuthProvider";
+import Navbar from "./Navbar";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Parties from "../../pages/Parties";
-import Salespersons from "../../pages/Salespersons";
-import Clients from "../../pages/Clients";
+import Parties from "../pages/Parties";
+import Salespersons from "../pages/Salespersons";
+import Clients from "../pages/Clients";
 import "./Login.css";
 import jwt_decode from "jwt-decode";
 
-import axios from "../../api/axios";
+import axios from "../api/axios";
 const LOGIN_URL = "/api/auth/login";
 const REFRESH_URL = "/api/auth/refresh";
 
