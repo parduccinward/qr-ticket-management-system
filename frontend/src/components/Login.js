@@ -1,5 +1,5 @@
 import {useRef, useState, useEffect, useContext} from "react";
-import AuthContext from "../context/AuthProvider";
+import useAuth from '../hooks/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./Login.css";
 
@@ -7,7 +7,7 @@ import axios from "../api/axios";
 const LOGIN_URL = "/api/auth/login";
 
 const Login = () => {
-    const {setAuth} = useContext(AuthContext);
+    const {setAuth} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
