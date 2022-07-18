@@ -1,4 +1,4 @@
-import {useRef, useState, useEffect, useContext} from "react";
+import {useRef, useState, useEffect} from "react";
 import useAuth from '../hooks/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./Login.css";
@@ -10,7 +10,7 @@ const Login = () => {
     const {setAuth} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/dashboard";
 
     const userRef = useRef();
     const errRef = useRef();
