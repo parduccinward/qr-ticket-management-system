@@ -20,7 +20,7 @@ function App() {
           <Route path="salespersons" element={<Salespersons/>} />
           <Route path="clients" element={<Clients/>} />
         </Route>
-        <Route path="*" element={<Missing />} />
+        <Route path="*" element={<Missing/>} />
       </Route>
     </Routes>
   );
