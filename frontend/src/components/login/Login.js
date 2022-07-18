@@ -6,9 +6,11 @@ import Parties from "../../pages/Parties";
 import Salespersons from "../../pages/Salespersons";
 import Clients from "../../pages/Clients";
 import "./Login.css";
+import jwt_decode from "jwt-decode";
 
 import axios from "../../api/axios";
 const LOGIN_URL = "/api/auth/login";
+const REFRESH_URL = "/api/auth/refresh";
 
 const Login = () => {
     const {setAuth} = useContext(AuthContext);
@@ -28,6 +30,38 @@ const Login = () => {
         setErrMsg("");
     },[username,password])
 
+    const refreshToken = async () => {
+        try {
+            const res = await axios.post(REFRESH_URL, {token:username.refreshToken});
+            setAuth({
+                username,
+                password,
+                accessToken: res.data.accessToken,
+                refreshToken: res.data.refreshToken
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const axiosJWT = axios.create()
+
+    axiosJWT.interceptors.request.use(
+      async (config) => {
+        let currentDate = new Date();
+        const decodedToken = jwt_decode(username.accessToken);
+        if (decodedToken.exp * 1000 < currentDate.getTime()) {
+          const data = await refreshToken();
+          config.headers["authorization"] = "Bearer " + data.accessToken;
+        }
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+
+
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try {
@@ -38,10 +72,9 @@ const Login = () => {
                     withCredentials: true
                 }
                 );
-            console.log(JSON.stringify(response?.data));
-            console.log(JSON.stringify(response));
-            const token = response?.data?.token;
-            setAuth({username, password, token});
+            const accessToken = response?.data?.accessToken;
+            const refreshToken = response?.data?.refreshToken;
+            setAuth({username, password, accessToken, refreshToken});
             setUser("");
             setPwd("");
             setSuccess(true);
