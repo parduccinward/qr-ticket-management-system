@@ -2,7 +2,7 @@
 const Dashboard = () => {
     return (
         <section>
-            <h1>The Dashboard</h1>
+            <h1>Bienvenido de vuelta!</h1>
         </section>
     )
 }
