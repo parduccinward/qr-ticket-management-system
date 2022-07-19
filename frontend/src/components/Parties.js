@@ -2,9 +2,11 @@ import {useState, useEffect} from "react";
 import axios from "../api/axios";
 import Navbar from "./Navbar";
 import "./pages.css";
+import useRefreshToken from "../hooks/useRefreshToken";
 
 const Parties = () => {
     const[parties, setParties] = useState();
+    const refresh = useRefreshToken();
 
     useEffect(() => {
         let isMounted = true;
@@ -42,6 +44,7 @@ const Parties = () => {
             </ul>
         ): <p>No hay fiestas por mostrar</p>
         }
+        <button onClick={() => refresh()}>Refresh</button>
     </div>
     </>
   )

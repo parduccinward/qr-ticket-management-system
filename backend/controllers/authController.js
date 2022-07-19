@@ -12,11 +12,10 @@ const loginUser = async (req, res) => {
                 if(err){
                     res.status(500).json({error: "Server error"});   
                 } else if(passwordsMatch === true){
-                    const accessToken = jwt.sign({username:username},process.env.ACCESS_TOKEN_SECRET,{expiresIn: "15m"});
-                    const refreshToken = jwt.sign({username:username},process.env.REFRESH_TOKEN_SECRET);
+                    const accessToken = jwt.sign({username:username},process.env.ACCESS_TOKEN_SECRET,{expiresIn: "30s"});
+                    const refreshToken = jwt.sign({username:username},process.env.REFRESH_TOKEN_SECRET, {expiresIn: "1d"});
                     refreshTokens.push(refreshToken);
                     res.status(200).json({
-                        username:username,
                         accessToken: accessToken,
                         refreshToken: refreshToken
                     });
