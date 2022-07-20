@@ -1,10 +1,18 @@
 import React from "react";
 import "./Navbar.css";
-import {Link} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { NavbarData } from './NavbarData';
 import * as RiIcons from 'react-icons/ri';
+import useLogout from '../hooks/useLogout';
 
 function Navbar(){
+
+    const logout = useLogout();
+
+    const signOut = async () => {
+      await logout();
+    }
+
     return(
         <>
         <nav className="nav-menu">
@@ -20,7 +28,7 @@ function Navbar(){
               );
             })}
               <li className= "logout-text">
-                <Link to="/logout">
+                <Link to="/logout" onClick={signOut}>
                 <RiIcons.RiLogoutBoxRLine />
                 <span>Logout</span>
                 </Link>
