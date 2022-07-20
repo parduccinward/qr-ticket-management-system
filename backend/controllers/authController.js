@@ -12,12 +12,13 @@ const loginUser = async (req, res) => {
                 if(err){
                     res.status(500).json({error: "Server error"});   
                 } else if(passwordsMatch === true){
-                    const accessToken = jwt.sign({username:username},process.env.ACCESS_TOKEN_SECRET,{expiresIn: "30s"});
-                    const refreshToken = jwt.sign({username:username},process.env.REFRESH_TOKEN_SECRET, {expiresIn: "1d"});
-                    refreshTokens.push(refreshToken);
+                    const accessToken = jwt.sign({"username":username},process.env.ACCESS_TOKEN_SECRET,{expiresIn: "15m"});
+                    const refreshToken = jwt.sign({"username":username},process.env.REFRESH_TOKEN_SECRET, {expiresIn: "1d"});
+                    
+                    const query = pool.query("UPDATE users SET refresh_token =$1 WHERE username=$2", [refreshToken, username]);
+                    res.cookie("jwt",refreshToken, {httpOnly:true, maxAge: 24 * 60 * 60 * 1000});
                     res.status(200).json({
-                        accessToken: accessToken,
-                        refreshToken: refreshToken
+                        accessToken: accessToken
                     });
                 }else{
                     res.status(400).json({error: "The password entered is incorrect."});
@@ -69,36 +70,8 @@ const registerUser = async (req, res) => {
     };
 }
 
-let refreshTokens = [];
-
-const refreshToken = (req, res) => {
-    const refreshToken =req.body.token
-
-    if(!refreshToken) return res.status(401).json("You are not authenticated!")
-    if(!refreshTokens.includes(refreshToken)){
-        return res.status(403).json("Refresh token is not valid");
-    }
-    jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET, (err,username) => {
-        if(err) console.log(err);
-        refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
-
-        const newAccessToken = jwt.sign({username:username},process.env.ACCESS_TOKEN_SECRET,{expiresIn: "15m"});
-        const newRefreshToken = jwt.sign({username:username},process.env.REFRESH_TOKEN_SECRET);
-
-        refreshTokens.push(newRefreshToken);
-
-        res.status(200).json({
-            accessToken: newAccessToken,
-            newRefreshToken: newRefreshToken
-        })
-
-    })
-}
-
 const logoutUser = (req, res) => {
-    const refreshToken = req.body.token;
-    refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
-    res.status(200).json("You logged out successfully");
+
 }
 
 
@@ -107,6 +80,5 @@ const logoutUser = (req, res) => {
 module.exports = {
     loginUser,
     registerUser,
-    logoutUser,
-    refreshToken
+    logoutUser
 };

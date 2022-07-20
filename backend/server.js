@@ -14,18 +14,20 @@ const app = express();
 
 app.use(cors({credentials: true, origin: process.env.FRONTEND_ORIGIN}));
 app.use(express.json());
+app.use(cookieParser());
 app.use((req, res, next) => {
     console.log(req.path, req.method);
     next();
 })
 
 
+app.use("/api/auth",userRoutes);
+app.use('/api/refresh', require('./routes/refresh'));
+app.use('/api/logout', require('./routes/logout'));
+
 app.use("/api/parties",verifyJWT, partyRoutes);
 app.use("/api/salespersons",verifyJWT, salespersonRoutes);
 app.use("/api/clients",verifyJWT, clientRoutes);
-app.use("/api/auth",userRoutes);
-
-app.use(cookieParser());
 
 app.listen(process.env.PORT, () => {
     console.log("listening on port",process.env.PORT);
