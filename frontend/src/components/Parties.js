@@ -1,12 +1,11 @@
 import {useState, useEffect} from "react";
-import axios from "../api/axios";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import Navbar from "./Navbar";
 import "./pages.css";
-import useRefreshToken from "../hooks/useRefreshToken";
 
 const Parties = () => {
     const[parties, setParties] = useState();
-    const refresh = useRefreshToken();
+    const axiosPrivate = useAxiosPrivate();
 
     useEffect(() => {
         let isMounted = true;
@@ -14,13 +13,14 @@ const Parties = () => {
 
         const getParties = async () => {
             try {
-                const response = await axios.get("/api/parties",{
+                const response = await axiosPrivate.get("/api/parties",{
                     signal:controller.signal
                 });
-                console.log(response.data);
                 isMounted && setParties(response.data)
             } catch (err) {
-                console.error(err);
+                if(!err.code === 'ERR_CANCELED'){
+                    console.log(err)
+                }
             }
         }
 
@@ -44,7 +44,6 @@ const Parties = () => {
             </ul>
         ): <p>No hay fiestas por mostrar</p>
         }
-        <button onClick={() => refresh()}>Refresh</button>
     </div>
     </>
   )
