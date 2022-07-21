@@ -10,3 +10,10 @@
     font-size:2rem;
     font-family: "Lato", sans-serif;
 }
+.layout-container{
+    display: flex;
+}
+
+.party-table{
+    flex: 1;
+}

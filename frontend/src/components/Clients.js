@@ -4,9 +4,11 @@ import "./pages.css";
 const Clients = () => {
   return (
     <>
-    <Navbar/>
-    <div className="clients">
-        <h1>Clientes</h1>
+    <div className="layout-container">
+      <Navbar/>
+      <div className="clients">
+          <h1>Clientes</h1>
+      </div>
     </div>
     </>
   )

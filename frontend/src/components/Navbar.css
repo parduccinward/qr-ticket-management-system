@@ -6,10 +6,8 @@ body{
 .nav-menu{
     background-color: #060b26;
     width:250px;
-    height:100vh;
-    display: flex;
+    height:100vh;   
     justify-content: center;
-    position: fixed;
     top: 0;
 }
 
