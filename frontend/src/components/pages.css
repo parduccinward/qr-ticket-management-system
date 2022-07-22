@@ -14,6 +14,11 @@
     display: flex;
 }
 
+.content-container{
+    flex: 1;
+}
+
+
 .party-table{
     flex: 1;
     padding: 50px 100px 50px 100px;
@@ -43,6 +48,33 @@
     margin-bottom: 20px;
 }
 
+.party-first-line a{
+    align-items: center;
+    display: flex;
+}
+
 .party-first-line h1{
     margin-left: 10px;
+}
+
+.add-party-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-party-container h2{
+    padding: 20px;
+}
+
+.add-party-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 500px;
+    align-self: center;
+}
+
+.add-party-container button{
+    width: 200px;
+    align-self: center;
 }
