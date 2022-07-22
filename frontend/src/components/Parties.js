@@ -41,7 +41,7 @@ const Parties = () => {
         <div className= "party-table">
             <div className="party-first-line">
                 <h1>Fiestas</h1>
-                <button className="btn btn-success">Agregar Fiesta</button>
+                <Link to="./add"className="btn btn-success">Agregar Fiesta</Link>
             </div>
             <table className="table table-striped">
                 <thead className="table-dark">
