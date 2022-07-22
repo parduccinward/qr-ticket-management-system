@@ -1,7 +1,7 @@
 import Login from './components/Login';
 import {Routes, Route} from "react-router-dom";
 import Layout from "./components/Layout";
-import Navbar from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
 import Parties from "./components/Parties";
 import Salespersons from "./components/Salespersons";
 import Clients from "./components/Clients";
@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Login/>} />
         <Route path="/logout" element={<Login/>} />
         <Route element={<RequireAuth/>}>
-          <Route path="dashboard" element={<Navbar/>} />
+          <Route path="dashboard" element={<Dashboard/>} />
           <Route path="parties" element={<Parties/>} />
           <Route path="salespersons" element={<Salespersons/>} />
           <Route path="clients" element={<Clients/>} />

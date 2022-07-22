@@ -16,4 +16,33 @@
 
 .party-table{
     flex: 1;
+    padding: 50px 100px 50px 100px;
+    font-size: 1rem;
+}
+
+
+.table.table-striped{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table.table-striped th,
+.table.table-striped td{
+    padding: 15px;
+}
+
+.dashboard-message{
+    flex: 1;
+    margin-top: 75px;
+    margin-left: 225px;
+}
+
+.party-first-line{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.party-first-line h1{
+    margin-left: 10px;
 }

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+
 body{
     margin:0;
 }
@@ -44,10 +45,12 @@ body{
 
 .nav-text a:hover {
     background-color: #1a83ff;
+    color:white;
 }
 
 .logout-text a:hover {
-    background-color: #E55640
+    background-color: #E55640;
+    color:white;
 }
 
 .logout-text {
