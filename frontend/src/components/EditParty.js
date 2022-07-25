@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Navbar from "./Navbar";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import {useNavigate, useParams} from "react-router-dom";
+import * as dayjs from 'dayjs'
 
 
 
@@ -26,11 +27,14 @@ const EditParty = () => {
     useEffect(() => {
         const loadParty = async () =>{
             const result = await axiosPrivate.get(`/api/parties/${id}`);
-            setParty(result.data);
-            
+            setParty(({name:result.data[0].name,sale_start_date:dateFormat(result.data[0].sale_start_date),sale_end_date:dateFormat(result.data[0].sale_end_date),party_date:dateFormat(result.data[0].party_date),banner_url:result.data[0].banner_url}));
         }
         loadParty();
     },[]);
+
+    const dateFormat = function (data){
+        return dayjs(data).format("YYYY-MM-DD");
+    }
 
 
     const onSubmit = async e =>{
