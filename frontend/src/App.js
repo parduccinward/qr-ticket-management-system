@@ -6,6 +6,7 @@ import Parties from "./components/Parties";
 import AddParty from "./components/AddParty";
 import AddSalesperson from "./components/AddSalesperson";
 import EditParty from "./components/EditParty";
+import EditSalesperson from "./components/EditSalesperson";
 import Salespersons from "./components/Salespersons";
 import Clients from "./components/Clients";
 import Missing from "./components/Missing";
@@ -24,6 +25,7 @@ function App() {
           <Route path="parties/edit/:id" element={<EditParty/>} />
           <Route path="salespersons" element={<Salespersons/>} />
           <Route path="salespersons/add" element={<AddSalesperson/>} />
+          <Route path="salespersons/edit/:id" element={<EditSalesperson/>} />
           <Route path="clients" element={<Clients/>} />
         </Route>
         <Route path="*" element={<Missing/>} />
