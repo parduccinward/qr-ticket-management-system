@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import "./pages.css";
 
 const Salespersons = () => {
-  const[salespersons, setSalespersons] = useState();
+    const[salespersons, setSalespersons] = useState();
     const axiosPrivate = useAxiosPrivate();
 
     useEffect(() => {

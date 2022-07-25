@@ -7,7 +7,7 @@ body{
 .nav-menu{
     background-color: #060b26;
     width:250px;
-    height:100vh;   
+    min-height: 100vh;  
     justify-content: center;
     top: 0;
 }
