@@ -65,7 +65,6 @@ const Parties = () => {
                            <td>{dayjs(data.party_date).format("DD/MM/YYYY")}</td>
                            <td>{data.banner_url}</td>
                            <td>
-                               <Link to="#" className="btn btn-primary m-2">Ver</Link>
                                <Link to={`./edit/${data.party_id}`} className="btn btn-primary m-2">Editar</Link>
                                <Link to="#" className="btn btn-danger m-2">Eliminar</Link>
                            </td>
