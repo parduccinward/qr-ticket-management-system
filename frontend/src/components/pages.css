@@ -25,6 +25,12 @@
     font-size: 1rem;
 }
 
+.salesperson-table{
+    flex: 1;
+    padding: 50px 100px 50px 100px;
+    font-size: 1rem;
+}
+
 
 .table.table-striped{
     text-align: center;
@@ -57,6 +63,21 @@
     margin-left: 10px;
 }
 
+.salesperson-first-line{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.salesperson-first-line a{
+    align-items: center;
+    display: flex;
+}
+
+.salesperson-first-line h1{
+    margin-left: 10px;
+}
+
 .add-party-container{
     display: flex;
     flex-direction: column;
@@ -75,6 +96,28 @@
 }
 
 .add-party-container button{
+    width: 200px;
+    align-self: center;
+}
+
+.add-salesperson-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-salesperson-container h2{
+    padding: 20px;
+}
+
+.add-salesperson-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 500px;
+    align-self: center;
+}
+
+.add-salesperson-container button{
     width: 200px;
     align-self: center;
 }
