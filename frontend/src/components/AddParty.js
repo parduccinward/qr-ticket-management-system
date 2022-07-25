@@ -80,7 +80,7 @@ const AddParty = () => {
                             name="party_date"
                             value={party_date}
                             onChange={e => onInputChange(e)}
-                            />
+                            required/>
                     </p>
                     <p>
                         <label htmlFor="banner_url">URL Banner</label>
@@ -92,7 +92,7 @@ const AddParty = () => {
                             name="banner_url"
                             value={banner_url}
                             onChange={e => onInputChange(e)}
-                            />
+                            required/>
                     </p>
                     <button className="btn btn-primary btn-block">Agregar Fiesta</button>
                 </form>

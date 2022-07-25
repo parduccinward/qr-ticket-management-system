@@ -25,14 +25,25 @@ const Parties = () => {
                 }
             }
         }
-
+        
+        
         getParties();
-
+        
         return () => {
             isMounted = false;
             controller.abort();
         }
     },[])
+    
+    const getParty = async () => {
+        const result = await axiosPrivate.get("/api/parties");
+        setParties(result.data);
+    }
+
+    const deleteParty = async id => {
+        await axiosPrivate.delete(`/api/parties/${id}`);
+        getParty();
+    }
 
   return (
     <>
@@ -66,7 +77,7 @@ const Parties = () => {
                            <td>{data.banner_url}</td>
                            <td>
                                <Link to={`./edit/${data.party_id}`} className="btn btn-primary m-2">Editar</Link>
-                               <Link to="#" className="btn btn-danger m-2">Eliminar</Link>
+                               <button className="btn btn-danger m-2" onClick={() => deleteParty(data.party_id)}>Eliminar</button>
                            </td>
                        </tr>
                    ))}
