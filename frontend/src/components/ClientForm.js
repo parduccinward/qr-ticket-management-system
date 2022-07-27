@@ -2,8 +2,10 @@ import {React, useState} from 'react'
 import axios from "../api/axios"
 import {useNavigate} from "react-router-dom";
 import "./ClientForm.css";
+import Dropdown from './Dropdown';
 
 const ClientForm = () => {
+    const [selected, setSelected] = useState("");
     let navigate = useNavigate();
     const [client, setClient] = useState({
         name:"",
@@ -75,28 +77,23 @@ const ClientForm = () => {
                             onChange={e => onInputChange(e)}
                             />
                     </p>
-                    <p>
-                        <input
-                            type="text"
-                            id="gender"
-                            className="client-form-input"
-                            placeholder="Genero*"
-                            name="gender"
-                            value={gender}
-                            onChange={e => onInputChange(e)}
-                            required/>
-                    </p>
-                    <p>
-                        <input
-                            type="text"
-                            id="payment_url"
-                            className="client-form-input"
-                            placeholder="Captura de pago*"
-                            name="payment_url"
-                            value={payment_url}
-                            onChange={e => onInputChange(e)}
-                            required/>
-                    </p>
+                    <div className="form-last-line">
+                        <Dropdown title="Genero"selected={selected} setSelected={setSelected}/>
+                        <p className="payment-container">
+                        <label class="myLabel">
+                            <input
+                                type="file"
+                                id="payment_url"
+                                className="client-form-input"
+                                placeholder="Captura de pago*"
+                                name="payment_url"
+                                value={payment_url}
+                                onChange={e => onInputChange(e)}
+                                required/>
+                            <span>Subir captura de pago</span>
+                        </label>
+                        </p>
+                    </div>
                 <button className="form-button">Enviar</button>
                 </form>
             </div>

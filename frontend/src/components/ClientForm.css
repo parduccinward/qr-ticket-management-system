@@ -75,6 +75,18 @@ input:focus::placeholder {
     border-bottom: 1px solid lightgray;
 }
 
+.form-last-line{
+    padding-left: 80px;
+    padding-right: 80px;
+    display: flex;
+    gap: 40px;
+}
+
+.payment-container{
+    width:50%;
+    margin-bottom: 0px;
+}
+
 .form-button{
     background-color: #1DB954;
     border-radius: 25px;
@@ -83,4 +95,31 @@ input:focus::placeholder {
     width: 120px;
     height: 50px;
     font-size: 1.4rem;
+    margin-top: 25px;
+}
+
+label.myLabel input[type="file"] {
+    position:absolute;
+    top: -1000px;
+}
+    
+.myLabel {
+    background-color: black;
+    border-bottom: 1px solid lightgray;
+    text-align: center;
+    border-radius: 4px;
+
+}
+.myLabel:hover {
+    background: rgba(72, 72, 72, 0.748);
+    cursor: pointer;
+}
+.myLabel:active {
+    background: #0f5929;
+}
+.myLabel :invalid + span {
+    color: #FFFDFA;
+}
+.myLabel :valid + span {
+    color: #1DB954;
 }
