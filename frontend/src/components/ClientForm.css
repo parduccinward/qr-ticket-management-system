@@ -1,0 +1,86 @@
+::placeholder{
+    color:#f0eeeaa3;
+    font-size:1.1rem;
+}
+
+input:focus::placeholder {
+    color: transparent;
+    transition: all 0.5s ease;
+}
+
+.App{
+    overflow: hidden !important;
+}
+
+.form-layout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(360deg, #39375b, #b58cd7);
+}
+
+.client-form-container{
+    display: flex;
+    justify-content: center;
+    width: 1000px;
+    height: 650px;
+    background: black;
+    border-radius: 15px;
+}
+
+.client-form-image{
+    background-image: url(../images/girl-form-image.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex:1;
+    border-radius: 15px 0px 0px 15px;
+}
+
+.client-form-registration{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.client-form-registration h2{
+    color:#FFFDFA;
+}
+
+.client-form-registration form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.client-form-input{
+    height: 30px;
+    width: 100%;
+    outline: none;
+    border: 0px;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    background-color: black;
+    border-bottom: 1px solid lightgray;
+    color:white;
+    font-size:1.2rem;
+}
+
+.client-form-input:focus{
+    border-bottom: 1px solid lightgray;
+}
+
+.form-button{
+    background-color: #1DB954;
+    border-radius: 25px;
+    border: none;
+    color: #FFFDFA;
+    width: 120px;
+    height: 50px;
+    font-size: 1.4rem;
+}

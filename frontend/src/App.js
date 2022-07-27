@@ -1,4 +1,5 @@
 import Login from './components/Login';
+import ClientForm from './components/ClientForm';
 import {Routes, Route} from "react-router-dom";
 import Layout from "./components/Layout";
 import Dashboard from "./components/Dashboard";
@@ -20,6 +21,7 @@ function App() {
       <Route path="/" element={<Layout/>}>
         <Route path="/" element={<Login/>} />
         <Route path="/logout" element={<Login/>} />
+        <Route path="/form" element={<ClientForm/>} />
         <Route element={<RequireAuth/>}>
           <Route path="dashboard" element={<Dashboard/>} />
           <Route path="parties" element={<Parties/>} />
