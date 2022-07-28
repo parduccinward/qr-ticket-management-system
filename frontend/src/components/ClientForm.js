@@ -1,11 +1,11 @@
 import {React, useState} from 'react'
 import axios from "../api/axios"
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import "./ClientForm.css";
-import Dropdown from './Dropdown';
 
 const ClientForm = () => {
-    const [selected, setSelected] = useState("");
+
+    const {id} = useParams();
     let navigate = useNavigate();
     const [client, setClient] = useState({
         name:"",
@@ -23,7 +23,8 @@ const ClientForm = () => {
 
     const onSubmit = async e =>{
         e.preventDefault();
-        // await axios.post("/api/clients",client);
+        console.log(client);
+        await axios.post(`/api/clients/${id}`,client);
         navigate("/");
     }
   return (
@@ -78,9 +79,17 @@ const ClientForm = () => {
                             />
                     </p>
                     <div className="form-last-line">
-                        <Dropdown title="Genero"selected={selected} setSelected={setSelected}/>
+                        <select name="gender" id="gender" onChange={e => onInputChange(e)}required>
+                            <option defaultValue="" disabled selected>Genero*</option>
+                            <option defaultValue={gender}>Masculino</option>
+                            <option defaultValue={gender}>Femenino</option>
+                            <option defaultValue={gender}>No binario</option>
+                            <option defaultValue={gender}>Transgénero</option>
+                            <option defaultValue={gender}>Intersexual</option>
+                            <option defaultValue={gender}>Prefiero no decirlo</option>
+                        </select>
                         <p className="payment-container">
-                        <label class="myLabel">
+                        <label className="myLabel">
                             <input
                                 type="file"
                                 id="payment_url"

@@ -117,7 +117,7 @@ const AddClient = () => {
                             name="party_id"
                             value={party_id}
                             onChange={e => onInputChange(e)}
-                            />
+                            required/>
                     </p>
                     <p>
                         <label htmlFor="salesperson_id">Relacionador</label>
@@ -128,7 +128,7 @@ const AddClient = () => {
                             name="salesperson_id"
                             value={salesperson_id}
                             onChange={e => onInputChange(e)}
-                            />
+                            required/>
                     </p>
                     <button className="btn btn-primary btn-block">Agregar Cliente</button>
                 </form>

@@ -105,7 +105,7 @@ label.myLabel input[type="file"] {
     
 .myLabel {
     background-color: black;
-    border-bottom: 1px solid lightgray;
+    border: 1px solid rgb(180, 179, 179);
     text-align: center;
     border-radius: 4px;
 
@@ -118,8 +118,12 @@ label.myLabel input[type="file"] {
     background: #0f5929;
 }
 .myLabel :invalid + span {
-    color: #FFFDFA;
+    color: #fbf04c;
 }
 .myLabel :valid + span {
     color: #1DB954;
+}
+
+.myLabel span{
+    margin-left: 0px;
 }

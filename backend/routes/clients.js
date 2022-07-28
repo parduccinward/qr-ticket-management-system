@@ -1,23 +1,27 @@
 const express = require("express");
+const verifyJWT = require('../middleware/verifyJWT');
 
 const {
     getClients,
     getClient,
     createClient,
+    createClientId,
     deleteClient,
     updateClient
 } = require("../controllers/clientController");
 
 const router = express.Router();
 
-router.get("/",getClients);
+router.get("/", verifyJWT, getClients);
 
-router.get("/:id",getClient);
+router.get("/:id", verifyJWT, getClient);
 
-router.post("/", createClient);
+router.post("/", verifyJWT, createClient);
 
-router.delete("/:id",deleteClient);
+router.post("/:id", createClientId);
 
-router.put("/:id",updateClient);
+router.delete("/:id", verifyJWT, deleteClient);
+
+router.put("/:id",verifyJWT, updateClient);
 
 module.exports = router;

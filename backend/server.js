@@ -27,7 +27,7 @@ app.use('/api/logout', require('./routes/logout'));
 
 app.use("/api/parties",verifyJWT, partyRoutes);
 app.use("/api/salespersons",verifyJWT, salespersonRoutes);
-app.use("/api/clients",verifyJWT, clientRoutes);
+app.use("/api/clients", clientRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log("listening on port",process.env.PORT);

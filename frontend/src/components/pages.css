@@ -170,3 +170,9 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+select#gender{
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}

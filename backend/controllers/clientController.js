@@ -32,6 +32,27 @@ const createClient = async (req, res) => {
     }
 }
 
+const createClientId = async (req, res) => {
+    try {
+        const {id} = req.params;
+
+        console.log(id);
+        
+        const payment_url = "boenas";
+        const party_id =1;
+        const salesperson_id=14;
+
+        const {name, last_name, phone, gender, instagram} = req.body;
+        const newClient = await pool.query(
+            "INSERT INTO clients (name, last_name, phone, gender, payment_url, instagram, party_id, salesperson_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+            [name, last_name, phone, gender, payment_url, instagram, party_id, salesperson_id]
+            );
+        res.json(newClient.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+}
+
 const deleteClient = async (req, res) => {
     try {
         const {id} = req.params;
@@ -61,6 +82,7 @@ module.exports = {
     getClients,
     getClient,
     createClient,
+    createClientId,
     deleteClient,
     updateClient
 }
