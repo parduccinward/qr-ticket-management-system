@@ -41,8 +41,11 @@ const Parties = () => {
     }
 
     const deleteParty = async id => {
-        await axiosPrivate.delete(`/api/parties/${id}`);
-        getParty();
+        const deleteConfirm = window.confirm('Estas seguro de querer eliminar este registro?');
+        if(deleteConfirm){
+            await axiosPrivate.delete(`/api/parties/${id}`);
+            getParty();
+        }
     }
 
   return (

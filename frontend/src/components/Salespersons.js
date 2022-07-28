@@ -41,8 +41,11 @@ const Salespersons = () => {
     }
 
     const deleteSalesperson = async id => {
-        await axiosPrivate.delete(`/api/salespersons/${id}`);
-        getSalesperson();
+        const deleteConfirm = window.confirm('Estas seguro de querer eliminar este registro?');
+        if(deleteConfirm){
+            await axiosPrivate.delete(`/api/salespersons/${id}`);
+            getSalesperson();
+        }
     }
 
     function copy(text){

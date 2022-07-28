@@ -40,8 +40,11 @@ const Clients = () => {
     }
 
     const deleteClient = async id => {
-        await axiosPrivate.delete(`/api/clients/${id}`);
-        getClient();
+        const deleteConfirm = window.confirm('Estas seguro de querer eliminar este registro?');
+        if(deleteConfirm){
+            await axiosPrivate.delete(`/api/clients/${id}`);
+            getClient();
+        }
     }
   return (
     <>
