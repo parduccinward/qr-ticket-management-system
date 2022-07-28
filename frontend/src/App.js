@@ -21,7 +21,7 @@ function App() {
       <Route path="/" element={<Layout/>}>
         <Route path="/" element={<Login/>} />
         <Route path="/logout" element={<Login/>} />
-        <Route path="/form" element={<ClientForm/>} />
+        <Route path="/form/:id" element={<ClientForm/>} />
         <Route element={<RequireAuth/>}>
           <Route path="dashboard" element={<Dashboard/>} />
           <Route path="parties" element={<Parties/>} />

@@ -21,10 +21,15 @@ const getSalesperson = async (req, res) => {
 
 const createSalesperson = async (req, res) => {
     try {
-        const {name,last_name, phone, email, sale_url, party_id} = req.body;
+        const {name,last_name, phone, email, party_id} = req.body;
+
+        const sale_url = process.env.FRONTEND_ORIGIN+"/form/"+name+" "+last_name;
+
+        const encoded_url = encodeURI(sale_url);
+
         const newSalesperson = await pool.query(
             "INSERT INTO salespersons (name, last_name, phone, email, sale_url, party_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
-             [name,last_name, phone, email, sale_url, party_id]
+             [name,last_name, phone, email, encoded_url, party_id]
              );
         res.json(newSalesperson.rows);
     } catch (err) {

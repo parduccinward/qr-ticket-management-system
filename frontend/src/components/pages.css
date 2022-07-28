@@ -164,3 +164,9 @@
     width: 200px;
     align-self: center;
 }
+
+.salesperson-url {
+    color: blue !important;
+    text-decoration: underline;
+    cursor: pointer;
+}

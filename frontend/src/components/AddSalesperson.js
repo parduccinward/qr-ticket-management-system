@@ -13,11 +13,10 @@ const AddSalesperson = () => {
         last_name:"",
         phone:"",
         email:"",
-        sale_url:"",
         party_id:"",
     })
 
-    const {name, last_name, phone, email, sale_url, party_id} = salesperson;
+    const {name, last_name, phone, email, party_id} = salesperson;
     const onInputChange = e =>{
         setSalesperson({...salesperson, [e.target.name]:e.target.value});
     }
@@ -80,18 +79,6 @@ const AddSalesperson = () => {
                             className="form-control"
                             name="email"
                             value={email}
-                            onChange={e => onInputChange(e)}
-                            required/>
-                    </p>
-                    <p>
-                        <label htmlFor="sale_url">URL de Venta</label>
-                        <input
-                            type="text"
-                            id="sale_url"
-                            className="form-control"
-                            placeholder="shorturl.at/bnV79"
-                            name="sale_url"
-                            value={sale_url}
                             onChange={e => onInputChange(e)}
                             required/>
                     </p>

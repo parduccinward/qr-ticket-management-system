@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom"
+import * as FiIcons from 'react-icons/fi';
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import Navbar from "./Navbar";
 import "./pages.css";
@@ -43,6 +44,11 @@ const Salespersons = () => {
         await axiosPrivate.delete(`/api/salespersons/${id}`);
         getSalesperson();
     }
+
+    function copy(text){
+        navigator.clipboard.writeText(text)
+        alert("URL copiado!");
+      }
   return (
     <>
     <div className="layout-container">
@@ -71,7 +77,7 @@ const Salespersons = () => {
                            <td>{data.name}</td>
                            <td>{data.last_name}</td>
                            <td>{data.phone}</td>
-                           <td>{data.sale_url}</td>
+                           <td className="salesperson-url"onClick={() => copy(data.sale_url)}>{data.sale_url}<FiIcons.FiCopy/></td>
                            <td>{data.party_id}</td>
                            <td>
                                <Link to={`./edit/${data.salesperson_id}`} className="btn btn-primary m-2">Editar</Link>
