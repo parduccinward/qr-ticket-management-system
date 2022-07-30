@@ -48,11 +48,13 @@ const createClientId = async (req, res) => {
         const payment_url = "boenas";
         const salesperson_id = salesperson[0].salesperson_id;
         const party_id = salesperson[0].party_id;
+        const salesperson_name = salesperson[0].name;
+        const created_at = new Date()
 
         const {name, last_name, phone, gender, instagram} = req.body;
         const newClient = await pool.query(
-            "INSERT INTO clients (name, last_name, phone, gender, payment_url, instagram, party_id, salesperson_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-            [name, last_name, phone, gender, payment_url, instagram, party_id, salesperson_id]
+            "INSERT INTO clients (name, last_name, phone, gender, payment_url, instagram, salesperson_name, created_at, party_id, salesperson_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
+            [name, last_name, phone, gender, payment_url, instagram, salesperson_name, created_at, party_id, salesperson_id]
             );
         res.json(newClient.rows);
     } catch (err) {

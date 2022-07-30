@@ -118,28 +118,6 @@ const EditClient = () => {
                             onChange={e => onInputChange(e)}
                             />
                     </p>
-                    <p>
-                        <label htmlFor="party_id">Fiesta</label>
-                        <input
-                            type="number"
-                            id="party_id"
-                            className="form-control"
-                            name="party_id"
-                            value={party_id}
-                            onChange={e => onInputChange(e)}
-                            />
-                    </p>
-                    <p>
-                        <label htmlFor="salesperson_id">Relacionador</label>
-                        <input
-                            type="number"
-                            id="salesperson_id"
-                            className="form-control"
-                            name="salesperson_id"
-                            value={salesperson_id}
-                            onChange={e => onInputChange(e)}
-                            />
-                    </p>
                     <button className="btn btn-primary btn-block">Actualizar Cliente</button>
                 </form>
             </div>

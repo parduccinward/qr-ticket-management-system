@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import Navbar from "./Navbar";
 import "./pages.css";
+import * as dayjs from 'dayjs'
 
 const Clients = () => {
     const[clients, setClients] = useState();
@@ -53,7 +54,6 @@ const Clients = () => {
       <div className= "client-table">
             <div className="client-first-line">
                 <h1>Clientes</h1>
-                <Link to="./add"className="btn btn-success">Agregar Cliente</Link>
             </div>
             <table className="table table-striped">
                 <thead className="table-dark">
@@ -65,8 +65,8 @@ const Clients = () => {
                     <th scope="col">Genero</th>
                     <th scope="col">URL de Pago</th>
                     <th scope="col">Instagram</th>
-                    <th scope="col">Fiesta</th>
                     <th scope="col">Relacionador</th>
+                    <th scope="col">Pago</th>
                     <th scope="col">Accion</th>
                     </tr>
                 </thead>
@@ -80,8 +80,8 @@ const Clients = () => {
                            <td>{data.gender}</td>
                            <td>{data.payment_url}</td>
                            <td>{data.instagram}</td>
-                           <td>{data.party_id}</td>
-                           <td>{data.salesperson_id}</td>
+                           <td>{data.salesperson_name}</td>
+                           <td>{dayjs(data.created_at).format("DD/MMMM/YYYY")}</td>
                            <td>
                                <Link to={`./edit/${data.client_id}`} className="btn btn-primary m-2">Editar</Link>
                                <button className="btn btn-danger m-2" onClick={() => deleteClient(data.client_id)}>Eliminar</button>
