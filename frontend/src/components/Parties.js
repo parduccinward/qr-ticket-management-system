@@ -80,9 +80,9 @@ const Parties = () => {
                        <tr>
                            <th scope="row">{index+1}</th>
                            <td>{data.name}</td>
-                           <td>{dayjs(data.sale_start_date).format("DD/MM/YYYY")}</td>
-                           <td>{dayjs(data.sale_end_date).format("DD/MM/YYYY")}</td>
-                           <td>{dayjs(data.party_date).format("DD/MM/YYYY")}</td>
+                           <td>{dayjs(data.sale_start_date).format("DD/MMMM/YYYY")}</td>
+                           <td>{dayjs(data.sale_end_date).format("DD/MMMM/YYYY")}</td>
+                           <td>{dayjs(data.party_date).format("DD/MMMM/YYYY")}</td>
                            <td className="banner-url"onClick={() => copy(data.banner_url)}>{data.banner_url}<FiIcons.FiCopy/></td>
                            <td>
                                <Link to={`./edit/${data.party_id}`} className="btn btn-primary m-2">Editar</Link>
