@@ -33,10 +33,10 @@ const ClientForm = () => {
         formData.append("instagram", client.instagram);
         console.log(formData);
         await axios.post(`/api/clients/${id}`,formData).then((res) => {
-            alert("File Upload success");
+            alert("Imagen subida correctamente");
+            navigate("/");
           })
-          .catch((err) => alert("File Upload Error"));
-        navigate("/");
+          .catch((err) => alert("Error en la subida de Imagen"));
     }
   return (
     <div className="form-layout">

@@ -1,4 +1,5 @@
 const pool = require("../models/db");
+const {cloudinary} = require("../cloud/cloudinary");
 
 const getClients = async (req, res) => {
     try {
@@ -35,7 +36,9 @@ const createClient = async (req, res) => {
 const createClientId = async (req, res) => {
     try {
         const {id} = req.params;
-        console.log(req.file.path);
+        const {name, last_name, phone, gender, instagram} = req.body;
+        const result = await cloudinary.uploader.upload(req.file.path, {folder:"payments"});
+
         const nameArray = id.split(" ")
         const queryName = nameArray[0];
         const queryLast_name = nameArray[1];
@@ -44,14 +47,12 @@ const createClientId = async (req, res) => {
 
         const salesperson = query.rows
 
-        
-        const payment_url = "boenas";
+        const payment_url = result.url;
         const salesperson_id = salesperson[0].salesperson_id;
         const party_id = salesperson[0].party_id;
         const salesperson_name = salesperson[0].name;
         const created_at = new Date()
 
-        const {name, last_name, phone, gender, instagram} = req.body;
         const newClient = await pool.query(
             "INSERT INTO clients (name, last_name, phone, gender, payment_url, instagram, salesperson_name, created_at, party_id, salesperson_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
             [name, last_name, phone, gender, payment_url, instagram, salesperson_name, created_at, party_id, salesperson_id]
