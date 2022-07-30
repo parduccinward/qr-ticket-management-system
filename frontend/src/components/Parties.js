@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom"
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import * as FiIcons from 'react-icons/fi';
 import Navbar from "./Navbar";
 import "./pages.css";
 import * as dayjs from 'dayjs'
@@ -48,6 +49,11 @@ const Parties = () => {
         }
     }
 
+    function copy(text){
+        navigator.clipboard.writeText(text)
+        alert("URL copiado!");
+    }
+
   return (
     <>
     <div className="layout-container">
@@ -77,7 +83,7 @@ const Parties = () => {
                            <td>{dayjs(data.sale_start_date).format("DD/MM/YYYY")}</td>
                            <td>{dayjs(data.sale_end_date).format("DD/MM/YYYY")}</td>
                            <td>{dayjs(data.party_date).format("DD/MM/YYYY")}</td>
-                           <td>{data.banner_url}</td>
+                           <td className="banner-url"onClick={() => copy(data.banner_url)}>{data.banner_url}<FiIcons.FiCopy/></td>
                            <td>
                                <Link to={`./edit/${data.party_id}`} className="btn btn-primary m-2">Editar</Link>
                                <button className="btn btn-danger m-2" onClick={() => deleteParty(data.party_id)}>Eliminar</button>
