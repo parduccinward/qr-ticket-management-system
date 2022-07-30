@@ -15,6 +15,7 @@ const AddSalesperson = () => {
         phone:"",
         email:"",
         party_id:"",
+        party_name:""
     })
     const {name, last_name, phone, email, party_id} = salesperson;
     const onInputChange = e =>{
@@ -24,7 +25,9 @@ const AddSalesperson = () => {
     const onSubmit = async e =>{
         e.preventDefault();
         let result = parties.find(o => o.name === salesperson.party_id);
-        salesperson.party_id = result.party_id
+        salesperson.party_id = result.party_id;
+        salesperson.party_name = result.name;
+        console.log(salesperson.party_name);
         await axiosPrivate.post("/api/salespersons",salesperson);
         navigate("/salespersons");
     }

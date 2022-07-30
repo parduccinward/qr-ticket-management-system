@@ -81,7 +81,7 @@ const Salespersons = () => {
                            <td>{data.last_name}</td>
                            <td>{data.phone}</td>
                            <td className="salesperson-url"onClick={() => copy(data.sale_url)}>{data.sale_url}<FiIcons.FiCopy/></td>
-                           <td>{data.party_id}</td>
+                           <td>{data.party_name}</td>
                            <td>
                                <Link to={`./edit/${data.salesperson_id}`} className="btn btn-primary m-2">Editar</Link>
                                <button className="btn btn-danger m-2" onClick={() => deleteSalesperson(data.salesperson_id)}>Eliminar</button>
