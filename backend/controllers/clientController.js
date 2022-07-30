@@ -35,12 +35,19 @@ const createClient = async (req, res) => {
 const createClientId = async (req, res) => {
     try {
         const {id} = req.params;
+        console.log(req.file.path);
+        const nameArray = id.split(" ")
+        const queryName = nameArray[0];
+        const queryLast_name = nameArray[1];
+    
+        const query = await pool.query("SELECT * FROM salespersons WHERE name=$1 AND last_name=$2",[queryName, queryLast_name])
 
-        console.log(id);
+        const salesperson = query.rows
+
         
         const payment_url = "boenas";
-        const party_id =1;
-        const salesperson_id=14;
+        const salesperson_id = salesperson[0].salesperson_id;
+        const party_id = salesperson[0].party_id;
 
         const {name, last_name, phone, gender, instagram} = req.body;
         const newClient = await pool.query(

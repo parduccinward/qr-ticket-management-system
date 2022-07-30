@@ -1,5 +1,19 @@
 const express = require("express");
 const verifyJWT = require('../middleware/verifyJWT');
+const multer = require("multer");
+const path = require("path")
+
+const storage = multer.diskStorage({
+    destination:(req,file,cb) => {
+        cb(null, "./uploads")
+    },
+    filename: (req, file, cb) => {
+        console.log(file)
+        cb(null, Date.now() + path.extname(file.originalname))
+    }
+})
+
+const upload = multer({storage:storage})
 
 const {
     getClients,
@@ -18,7 +32,7 @@ router.get("/:id", verifyJWT, getClient);
 
 router.post("/", verifyJWT, createClient);
 
-router.post("/:id", createClientId);
+router.post("/:id", upload.single("payment_url"), createClientId);
 
 router.delete("/:id", verifyJWT, deleteClient);
 

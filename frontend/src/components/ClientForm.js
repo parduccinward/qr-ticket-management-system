@@ -7,6 +7,7 @@ const ClientForm = () => {
 
     const {id} = useParams();
     let navigate = useNavigate();
+    const [selectedFile, setSelectedFile] = useState(null);
     const [client, setClient] = useState({
         name:"",
         last_name:"",
@@ -16,15 +17,25 @@ const ClientForm = () => {
         instagram:"",
     })
 
-    const {name, last_name, phone, gender, payment_url, instagram} = client;
+    const {name, last_name, phone, gender, instagram} = client;
     const onInputChange = e =>{
         setClient({...client, [e.target.name]:e.target.value});
     }
 
     const onSubmit = async e =>{
         e.preventDefault();
-        console.log(client);
-        await axios.post(`/api/clients/${id}`,client);
+        const formData = new FormData();
+        formData.append("name", client.name);
+        formData.append("last_name", client.last_name);
+        formData.append("phone", client.phone);
+        formData.append("gender", client.gender);
+        formData.append("payment_url", selectedFile);
+        formData.append("instagram", client.instagram);
+        console.log(formData);
+        await axios.post(`/api/clients/${id}`,formData).then((res) => {
+            alert("File Upload success");
+          })
+          .catch((err) => alert("File Upload Error"));
         navigate("/");
     }
   return (
@@ -32,7 +43,7 @@ const ClientForm = () => {
         <div className="client-form-container">
             <div className="client-form-image"></div>
             <div className="client-form-registration">
-                <form onSubmit={e => onSubmit(e)}>
+                <form onSubmit={e => onSubmit(e)} encType="multipart/form-data">
                     <h2 className="client-form-title">Registro Inti Raymi</h2>
                     <p>
                         <input
@@ -81,8 +92,8 @@ const ClientForm = () => {
                     <div className="form-last-line">
                         <select name="gender" id="gender" onChange={e => onInputChange(e)}required>
                             <option defaultValue="" disabled selected>Genero*</option>
-                            <option defaultValue={gender}>Masculino</option>
-                            <option defaultValue={gender}>Femenino</option>
+                            <option defaultValue={gender}>Hombre</option>
+                            <option defaultValue={gender}>Mujer</option>
                             <option defaultValue={gender}>No binario</option>
                             <option defaultValue={gender}>Transgénero</option>
                             <option defaultValue={gender}>Intersexual</option>
@@ -93,13 +104,11 @@ const ClientForm = () => {
                             <input
                                 type="file"
                                 id="payment_url"
-                                className="client-form-input"
-                                placeholder="Captura de pago*"
                                 name="payment_url"
-                                value={payment_url}
-                                onChange={e => onInputChange(e)}
+                                value={undefined}
+                                onChange={(e) => setSelectedFile(e.target.files[0])}
                                 required/>
-                            <span>Subir captura de pago</span>
+                            <span>Subir captura de pago*</span>
                         </label>
                         </p>
                     </div>
