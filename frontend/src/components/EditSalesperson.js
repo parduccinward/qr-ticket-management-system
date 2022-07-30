@@ -19,7 +19,7 @@ const EditSalesperson = () => {
         party_id:"",
     })
 
-    const {name, last_name, phone, email, sale_url, party_id} = salesperson;
+    const {name, last_name, phone, email, sale_url} = salesperson;
     const onInputChange = e =>{
         setSalesperson({...salesperson, [e.target.name]:e.target.value});
     }
@@ -102,17 +102,6 @@ const EditSalesperson = () => {
                             placeholder="shorturl.at/bnV79"
                             name="sale_url"
                             value={sale_url}
-                            onChange={e => onInputChange(e)}
-                            required/>
-                    </p>
-                    <p>
-                        <label htmlFor="party_id">Fiesta</label>
-                        <input
-                            type="number"
-                            id="party_id"
-                            className="form-control"
-                            name="party_id"
-                            value={party_id}
                             onChange={e => onInputChange(e)}
                             required/>
                     </p>

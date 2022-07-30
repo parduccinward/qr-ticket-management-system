@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import Navbar from "./Navbar";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import {useNavigate} from "react-router-dom";
@@ -8,6 +8,7 @@ import "./pages.css";
 const AddSalesperson = () => {
     let navigate = useNavigate();
     const axiosPrivate = useAxiosPrivate();
+    const[parties, setParties] = useState();
     const [salesperson, setSalesperson] = useState({
         name:"",
         last_name:"",
@@ -15,7 +16,6 @@ const AddSalesperson = () => {
         email:"",
         party_id:"",
     })
-
     const {name, last_name, phone, email, party_id} = salesperson;
     const onInputChange = e =>{
         setSalesperson({...salesperson, [e.target.name]:e.target.value});
@@ -23,9 +23,37 @@ const AddSalesperson = () => {
 
     const onSubmit = async e =>{
         e.preventDefault();
+        let result = parties.find(o => o.name === salesperson.party_id);
+        salesperson.party_id = result.party_id
         await axiosPrivate.post("/api/salespersons",salesperson);
         navigate("/salespersons");
     }
+
+    useEffect(() => {
+        let isMounted = true;
+        const controller = new AbortController();
+
+        const getParties = async () => {
+            try {
+                const response = await axiosPrivate.get("/api/parties",{
+                    signal:controller.signal
+                });
+                isMounted && setParties(response.data)
+            } catch (err) {
+                if(!err.code === 'ERR_CANCELED'){
+                    console.log(err)
+                }
+            }
+        }
+        
+        
+        getParties();
+        
+        return () => {
+            isMounted = false;
+            controller.abort();
+        }
+    },[])
 
     return(
         <>
@@ -83,15 +111,12 @@ const AddSalesperson = () => {
                             required/>
                     </p>
                     <p>
-                        <label htmlFor="party_id">Fiesta</label>
-                        <input
-                            type="number"
-                            id="party_id"
-                            className="form-control"
-                            name="party_id"
-                            value={party_id}
-                            onChange={e => onInputChange(e)}
-                            required/>
+                        <select value={party_id}className="form-select" name="party_id" id="party_id" onChange={e => onInputChange(e)}required>
+                            <option value="" disabled selected>Fiesta*</option>
+                            {parties?.map((data)=>(
+                                <option>{data.name}</option>
+                            ))}
+                        </select>
                     </p>
                     <button className="btn btn-primary btn-block">Agregar Relacionador</button>
                 </form>
