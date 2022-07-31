@@ -172,6 +172,20 @@
 }
 
 .banner-url {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: blue !important;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+td.payment-url{
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: blue !important;
     text-decoration: underline;
     cursor: pointer;

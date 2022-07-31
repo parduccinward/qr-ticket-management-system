@@ -47,6 +47,12 @@ const Clients = () => {
             getClient();
         }
     }
+
+    function copy(text){
+        navigator.clipboard.writeText(text)
+        alert("URL copiado!");
+    }
+    
   return (
     <>
     <div className="layout-container">
@@ -78,7 +84,7 @@ const Clients = () => {
                            <td>{data.last_name}</td>
                            <td>{data.phone}</td>
                            <td>{data.gender}</td>
-                           <td>{data.payment_url}</td>
+                           <td className="payment-url" onClick={() => copy(data.payment_url)}>{data.payment_url}</td>
                            <td>{data.instagram}</td>
                            <td>{data.salesperson_name}</td>
                            <td>{dayjs(data.created_at).format("DD/MMMM/YYYY")}</td>
