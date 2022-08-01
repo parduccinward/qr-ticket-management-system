@@ -10,6 +10,7 @@ import AddClient from "./components/AddClient";
 import EditParty from "./components/EditParty";
 import EditSalesperson from "./components/EditSalesperson";
 import EditClient from "./components/EditClient";
+import GetClient from "./components/GetClient";
 import Salespersons from "./components/Salespersons";
 import Clients from "./components/Clients";
 import Missing from "./components/Missing";
@@ -33,6 +34,7 @@ function App() {
           <Route path="clients" element={<Clients/>} />
           <Route path="clients/add" element={<AddClient/>} />
           <Route path="clients/edit/:id" element={<EditClient/>} />
+          <Route path="qr/:id" element={<GetClient/>} />
         </Route>
         <Route path="*" element={<Missing/>} />
       </Route>

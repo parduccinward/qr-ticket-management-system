@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Modal.css";
+import {QRCodeSVG} from 'qrcode.react';
 
 function Modal({closeModal, clientId}) {
   return (
@@ -12,7 +13,7 @@ function Modal({closeModal, clientId}) {
                 <h1>Codigo QR de {clientId.name}</h1>
             </div>
             <div className="body">
-                <p> QR CODE</p>
+                <QRCodeSVG value={"http://localhost:3000/qr/"+clientId.client_id} />
             </div>
             <div className="footer">
                 <button>Descargar</button>

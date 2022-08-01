@@ -65,3 +65,9 @@ border-radius: 8px;
 font-size: 20px;
 cursor: pointer;
 }
+
+.body svg{
+    height:200px;
+    width:auto;
+    margin-top:20px;
+}
