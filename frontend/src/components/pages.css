@@ -198,8 +198,11 @@ select#gender{
 }
 
 button.btn.btn-link.m-2 {
-    border: 1px solid;
-    border: 0;
+    border: 1px solid !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
+}
+
+i.bi.bi-qr-code.bi-7x {
+    font-size: 1.1rem !important;
 }

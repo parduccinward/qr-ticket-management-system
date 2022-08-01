@@ -5,8 +5,12 @@ import Navbar from "./Navbar";
 import "./pages.css";
 import * as dayjs from 'dayjs'
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import Modal from './Modal';
+
 
 const Clients = () => {
+    const[openModal, setOpenModal] = useState(false);
+    const[client, setClient] = useState();
     const[clients, setClients] = useState();
     const axiosPrivate = useAxiosPrivate();
 
@@ -56,6 +60,7 @@ const Clients = () => {
     
   return (
     <>
+    {openModal && <Modal closeModal={setOpenModal} clientId={client} />}
     <div className="layout-container">
       <Navbar/>
       <div className= "client-table">
@@ -90,7 +95,7 @@ const Clients = () => {
                            <td>{data.salesperson_name}</td>
                            <td>{dayjs(data.created_at).format("DD/MMMM/YYYY")}</td>
                            <td>
-                               <button className="btn btn-link m-2" ><i class="bi bi-qr-code bi-7x"></i></button>
+                               <button className="btn btn-link m-2" onClick={() => {setOpenModal(true);setClient(data)}}><i class="bi bi-qr-code bi-7x"></i></button>
                                <Link to={`./edit/${data.client_id}`} className="btn btn-primary m-2">Editar</Link>
                                <button className="btn btn-danger m-2" onClick={() => deleteClient(data.client_id)}>Eliminar</button>
                            </td>
