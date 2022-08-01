@@ -53,9 +53,11 @@ const createClientId = async (req, res) => {
         const salesperson_name = salesperson[0].name;
         const created_at = new Date()
 
+        const qr_code = require("crypto").randomBytes(4).toString("hex");
+
         const newClient = await pool.query(
-            "INSERT INTO clients (name, last_name, phone, gender, payment_url, instagram, salesperson_name, created_at, party_id, salesperson_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
-            [name, last_name, phone, gender, payment_url, instagram, salesperson_name, created_at, party_id, salesperson_id]
+            "INSERT INTO clients (name, last_name, phone, gender, payment_url, instagram, salesperson_name, created_at, qr_code, party_id, salesperson_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *",
+            [name, last_name, phone, gender, payment_url, instagram, salesperson_name, created_at, qr_code, party_id, salesperson_id]
             );
         res.json(newClient.rows);
     } catch (err) {

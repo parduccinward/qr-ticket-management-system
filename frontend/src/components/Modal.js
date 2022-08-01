@@ -13,7 +13,7 @@ function Modal({closeModal, clientId}) {
                 <h1>Codigo QR de {clientId.name}</h1>
             </div>
             <div className="body">
-                <QRCodeSVG value={"http://localhost:3000/qr/"+clientId.client_id} />
+                <QRCodeSVG value={"http://localhost:3000/qr/"+clientId.qr_code} />
             </div>
             <div className="footer">
                 <button>Descargar</button>
