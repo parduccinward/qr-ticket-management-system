@@ -4,6 +4,7 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import Navbar from "./Navbar";
 import "./pages.css";
 import * as dayjs from 'dayjs'
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const Clients = () => {
     const[clients, setClients] = useState();
@@ -89,6 +90,7 @@ const Clients = () => {
                            <td>{data.salesperson_name}</td>
                            <td>{dayjs(data.created_at).format("DD/MMMM/YYYY")}</td>
                            <td>
+                               <button className="btn btn-link m-2" ><i class="bi bi-qr-code bi-7x"></i></button>
                                <Link to={`./edit/${data.client_id}`} className="btn btn-primary m-2">Editar</Link>
                                <button className="btn btn-danger m-2" onClick={() => deleteClient(data.client_id)}>Eliminar</button>
                            </td>

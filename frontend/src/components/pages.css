@@ -196,3 +196,10 @@ select#gender{
     background-color: black;
     color: white;
 }
+
+button.btn.btn-link.m-2 {
+    border: 1px solid;
+    border: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
