@@ -2,6 +2,7 @@ const express = require("express");
 const verifyJWT = require('../middleware/verifyJWT');
 const multer = require("multer");
 const path = require("path")
+const cors = require("cors");
 
 const storage = multer.diskStorage({
     filename: (req, file, cb) => {
@@ -44,6 +45,10 @@ router.delete("/:id", verifyJWT, deleteClient);
 
 router.put("/:id",verifyJWT, updateClient);
 
-router.get("/qr/:id",verifyJWT, downloadQR);
+router.get("/qr/:id",verifyJWT, cors({
+    credentials: true,
+    origin: process.env.FRONTEND_ORIGIN,
+    exposedHeaders: ['Content-Disposition'],
+  }), downloadQR);
 
 module.exports = router;
