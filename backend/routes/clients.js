@@ -26,7 +26,8 @@ const {
     createClient,
     createClientId,
     deleteClient,
-    updateClient
+    updateClient,
+    downloadQR
 } = require("../controllers/clientController");
 
 const router = express.Router();
@@ -42,5 +43,7 @@ router.post("/:id", upload.single("payment_url"), createClientId);
 router.delete("/:id", verifyJWT, deleteClient);
 
 router.put("/:id",verifyJWT, updateClient);
+
+router.get("/qr/:id",verifyJWT, downloadQR);
 
 module.exports = router;

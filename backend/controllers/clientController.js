@@ -1,5 +1,6 @@
 const pool = require("../models/db");
 const {cloudinary} = require("../cloud/cloudinary");
+const QRCode = require('qrcode')
 
 const getClients = async (req, res) => {
     try {
@@ -90,11 +91,26 @@ const updateClient = async (req, res) => {
 }
 
 
+const downloadQR = async (req, res) => {
+    try {
+        const {id} = req.params;
+
+        const qr = await QRCode.toFile(`./uploads/${id}.png`,"http://localhost:3000/qr/"+id);
+        
+        const qrImage = `./uploads/${id}.png`
+        res.download(qrImage);
+    } catch (err) {
+        console.error(err.message);
+    }
+}
+
+
 module.exports = {
     getClients,
     getClient,
     createClient,
     createClientId,
     deleteClient,
-    updateClient
+    updateClient,
+    downloadQR
 }
