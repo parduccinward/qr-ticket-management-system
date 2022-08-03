@@ -24,10 +24,10 @@ const getClient = async (req, res) => {
 
 const createClient = async (req, res) => {
     try {
-        const {name, last_name, phone, gender, payment_url, instagram, party_id, salesperson_id} = req.body;
+        const {name, last_name, phone, ci, gender, payment_url, instagram, party_id, salesperson_id} = req.body;
         const newClient = await pool.query(
-            "INSERT INTO clients (name, last_name, phone, gender, payment_url, instagram, party_id, salesperson_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-            [name, last_name, phone, gender, payment_url, instagram, party_id, salesperson_id]
+            "INSERT INTO clients (name, last_name, phone, ci, gender, payment_url, instagram, party_id, salesperson_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
+            [name, last_name, phone, ci, gender, payment_url, instagram, party_id, salesperson_id]
             );
         res.json(newClient.rows);
     } catch (err) {
@@ -38,7 +38,7 @@ const createClient = async (req, res) => {
 const createClientId = async (req, res) => {
     try {
         const {id} = req.params;
-        const {name, last_name, phone, gender, instagram} = req.body;
+        const {name, last_name, phone, ci, gender, instagram} = req.body;
         const result = await cloudinary.uploader.upload(req.file.path, {folder:"payments"});
 
         const nameArray = id.split(" ")
@@ -58,8 +58,8 @@ const createClientId = async (req, res) => {
         const qr_code = require("crypto").randomBytes(4).toString("hex");
 
         const newClient = await pool.query(
-            "INSERT INTO clients (name, last_name, phone, gender, payment_url, instagram, salesperson_name, created_at, qr_code, party_id, salesperson_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *",
-            [name, last_name, phone, gender, payment_url, instagram, salesperson_name, created_at, qr_code, party_id, salesperson_id]
+            "INSERT INTO clients (name, last_name, phone, ci, gender, payment_url, instagram, salesperson_name, created_at, qr_code, party_id, salesperson_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *",
+            [name, last_name, phone, ci, gender, payment_url, instagram, salesperson_name, created_at, qr_code, party_id, salesperson_id]
             );
         res.json(newClient.rows);
     } catch (err) {

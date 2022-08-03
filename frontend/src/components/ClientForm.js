@@ -12,12 +12,13 @@ const ClientForm = () => {
         name:"",
         last_name:"",
         phone:"",
+        ci:"",
         gender:"",
         payment_url:"",
         instagram:"",
     })
 
-    const {name, last_name, phone, gender, instagram} = client;
+    const {name, last_name, phone, ci, gender, instagram} = client;
     const onInputChange = e =>{
         setClient({...client, [e.target.name]:e.target.value});
     }
@@ -28,6 +29,7 @@ const ClientForm = () => {
         formData.append("name", client.name);
         formData.append("last_name", client.last_name);
         formData.append("phone", client.phone);
+        formData.append("phone", client.ci);
         formData.append("gender", client.gender);
         formData.append("payment_url", selectedFile);
         formData.append("instagram", client.instagram);
@@ -64,6 +66,17 @@ const ClientForm = () => {
                             placeholder="Apellido*"
                             name="last_name"
                             value={last_name}
+                            onChange={e => onInputChange(e)}
+                            required/>
+                    </p>
+                    <p>
+                        <input
+                            type="text"
+                            id="ci"
+                            className="client-form-input"
+                            placeholder="CI*"
+                            name="ci"
+                            value={ci}
                             onChange={e => onInputChange(e)}
                             required/>
                     </p>
