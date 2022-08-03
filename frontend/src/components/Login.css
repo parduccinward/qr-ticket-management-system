@@ -112,3 +112,11 @@ body {
 .missing-link a{
     color: white;
 }
+
+.decoded-qr-code h1{
+    text-align: center;
+    margin-bottom:30px;
+}
+#validate-qr{
+    margin-top: 30px;
+}
