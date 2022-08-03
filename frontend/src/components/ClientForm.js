@@ -29,11 +29,10 @@ const ClientForm = () => {
         formData.append("name", client.name);
         formData.append("last_name", client.last_name);
         formData.append("phone", client.phone);
-        formData.append("phone", client.ci);
+        formData.append("ci", client.ci);
         formData.append("gender", client.gender);
         formData.append("payment_url", selectedFile);
         formData.append("instagram", client.instagram);
-        console.log(formData);
         await axios.post(`/api/clients/${id}`,formData).then((res) => {
             alert("Imagen subida correctamente");
             navigate("/");

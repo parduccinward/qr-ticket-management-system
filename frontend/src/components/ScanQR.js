@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import "./Login.css";
 import axios from "../api/axios";
+import ModalQR from './ModalQR';
 
 const ScanQR = () => {
-
+  const[openModal, setOpenModal] = useState(false);
+  const[clientData, setClientData] = useState("")
   const[decodedCode, setDecodedCode] = useState("");
 
   const copyToInput = async () =>{
@@ -20,15 +22,18 @@ const ScanQR = () => {
             withCredentials: true
         }
         );
-      console.log(response)
-      setDecodedCode("");
+      setClientData(response.data);
+      setOpenModal(true);
     } catch (err) {
       console.error(err.message)
+      alert("QR invalido!");
+      setDecodedCode("");
     }
   }
 
   return (
     <>
+    {openModal && <ModalQR closeModal={setOpenModal} clientData={clientData} />}
     <div className="login-center">
         <section className="login-container">
             <div className="decoded-qr-code">
