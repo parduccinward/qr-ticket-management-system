@@ -4,8 +4,7 @@ const verifyJWT = require('../middleware/verifyJWT');
 
 const {
     loginUser,
-    registerUser,
-    logoutUser
+    registerUser
 } = require("../controllers/authController");
 
 const router = express.Router();
@@ -13,8 +12,6 @@ const router = express.Router();
 router.post("/register", verifyJWT, registerUser);
 
 router.post("/login", loginUser);
-
-router.post("/logout", verifyJWT, logoutUser);
 
 
 module.exports = router;

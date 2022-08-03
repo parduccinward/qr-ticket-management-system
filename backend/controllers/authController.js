@@ -70,15 +70,10 @@ const registerUser = async (req, res) => {
     };
 }
 
-const logoutUser = (req, res) => {
-
-}
-
 
 
 
 module.exports = {
     loginUser,
-    registerUser,
-    logoutUser
+    registerUser
 };

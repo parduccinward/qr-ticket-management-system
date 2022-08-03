@@ -28,7 +28,8 @@ const {
     createClientId,
     deleteClient,
     updateClient,
-    downloadQR
+    downloadQR,
+    validateQR
 } = require("../controllers/clientController");
 
 const router = express.Router();
@@ -38,6 +39,8 @@ router.get("/", verifyJWT, getClients);
 router.get("/:id", verifyJWT, getClient);
 
 router.post("/", verifyJWT, createClient);
+
+router.post("/validateQR", validateQR);
 
 router.post("/:id", upload.single("payment_url"), createClientId);
 
@@ -50,5 +53,6 @@ router.get("/qr/:id",verifyJWT, cors({
     origin: process.env.FRONTEND_ORIGIN,
     exposedHeaders: ['Content-Disposition'],
   }), downloadQR);
+
 
 module.exports = router;

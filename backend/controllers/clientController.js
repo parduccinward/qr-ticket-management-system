@@ -95,7 +95,7 @@ const updateClient = async (req, res) => {
 const downloadQR = async (req, res) => {
     try {
         const {id} = req.params;
-        const qr = await QRCode.toFile(`./uploads/${id}.png`,"http://localhost:3000/qr/"+id, {width:'400'});
+        const qr = await QRCode.toFile(`./uploads/${id}.png`,id, {width:'400'});
         const qrImage = `./uploads/${id}.png`
         const stream = fs.createReadStream(qrImage);
         res.set({
@@ -108,6 +108,21 @@ const downloadQR = async (req, res) => {
     }
 }
 
+const validateQR = async (req,res) => {
+    try {
+        const {decodedCode} = req.body;
+        const searchQR = await pool.query("SELECT * FROM clients WHERE qr_code=$1",[decodedCode]);
+        const client = searchQR.rows
+        if(client.length !== 0){
+            res.json(searchQR.rows[0]);
+        }else{
+            res.status(404).json({error: "QR Code is not valid!"});
+        }
+
+    } catch (err) {
+        console.error(err.message)
+    }
+}
 
 module.exports = {
     getClients,
@@ -116,5 +131,6 @@ module.exports = {
     createClientId,
     deleteClient,
     updateClient,
-    downloadQR
+    downloadQR,
+    validateQR
 }
