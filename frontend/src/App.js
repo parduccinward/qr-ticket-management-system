@@ -1,5 +1,6 @@
 import Login from './components/Login';
 import ClientForm from './components/ClientForm';
+import Greetings from "./components/Greetings";
 import {Routes, Route} from "react-router-dom";
 import Layout from "./components/Layout";
 import Dashboard from "./components/Dashboard";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Login/>} />
         <Route path="/logout" element={<Login/>} />
         <Route path="/form/:id" element={<ClientForm/>} />
+        <Route path="/greetings" element={<Greetings/>} />
         <Route element={<RequireAuth allowedRoles={[5150]}/>}>
           <Route path="dashboard" element={<Dashboard/>} />
           <Route path="parties" element={<Parties/>} />

@@ -35,7 +35,7 @@ const ClientForm = () => {
         formData.append("instagram", client.instagram);
         await axios.post(`/api/clients/${id}`,formData).then((res) => {
             alert("Imagen subida correctamente");
-            navigate("/");
+            navigate("/greetings");
           })
           .catch((err) => alert("Error en la subida de Imagen"));
     }

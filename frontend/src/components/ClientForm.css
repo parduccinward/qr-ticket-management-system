@@ -127,3 +127,17 @@ label.myLabel input[type="file"] {
 .myLabel span{
     margin-left: 0px;
 }
+
+.greetings-text{
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+h5.greetings-two,
+h5.greetings-three {
+    color: white;
+}
