@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines":{
+    "node": "16.15.0",
+    "npm": "8.5.5"
+  },
   "scripts": {
     "start": "node server.js",
-    "heroku-postbuild": "cd ./frontend ",
+    "heroku-postbuild": "cd frontend && npm install && npm run build",
     "dev": "nodemon server.js"
   },
   "keywords": [],

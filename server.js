@@ -18,7 +18,7 @@ app.use(cors({credentials: true, origin: process.env.FRONTEND_ORIGIN}));
 app.use(express.json());
 
 if(process.env.NODE_ENV === "production"){
-    app.use(express.static(path.join(___dirname,"/frontend/build")));
+    app.use(express.static(path.join(__dirname,"/frontend/build")));
 }
 
 app.use(cookieParser());
