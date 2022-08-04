@@ -23,7 +23,7 @@ function App() {
         <Route path="/" element={<Login/>} />
         <Route path="/logout" element={<Login/>} />
         <Route path="/form/:id" element={<ClientForm/>} />
-        <Route element={<RequireAuth/>}>
+        <Route element={<RequireAuth allowedRoles={[5150]}/>}>
           <Route path="dashboard" element={<Dashboard/>} />
           <Route path="parties" element={<Parties/>} />
           <Route path="parties/add" element={<AddParty/>} />
@@ -35,7 +35,9 @@ function App() {
           <Route path="clients/add" element={<AddClient/>} />
           <Route path="clients/edit/:id" element={<EditClient/>} />
         </Route>
-        <Route path="qr" element={<ScanQR/>} />
+        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
+          <Route path="qr" element={<ScanQR/>} />
+        </Route>
         <Route path="*" element={<Missing/>} />
       </Route>
     </Routes>

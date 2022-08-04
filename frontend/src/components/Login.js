@@ -10,7 +10,8 @@ const Login = () => {
     const {setAuth} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/dashboard";
+    const fromAdmin = location.state?.from?.pathname || "/dashboard";
+    const fromSecurity = location.state?.from?.pathname || "/qr";
 
     const userRef = useRef();
     const errRef = useRef();
@@ -38,10 +39,17 @@ const Login = () => {
                 }
                 );
             const accessToken = response?.data?.accessToken;
-            setAuth({username, password, accessToken});
+            const roleResponse = response?.data?.role;
+            const role = [];
+            role[0]=roleResponse;
+            setAuth({username, password, role, accessToken});
             setUser("");
             setPwd("");
-            navigate(from, { replace: true });
+            if(roleResponse===5150){
+                navigate(fromAdmin, { replace: true });
+            }else if(roleResponse===2001){
+                navigate(fromSecurity, { replace: true });
+            }
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('Servidor sin respuesta');

@@ -18,7 +18,8 @@ const loginUser = async (req, res) => {
                     const query = pool.query("UPDATE users SET refresh_token =$1 WHERE username=$2", [refreshToken, username]);
                     res.cookie("jwt",refreshToken, {httpOnly:true, maxAge: 24 * 60 * 60 * 1000});
                     res.status(200).json({
-                        accessToken: accessToken
+                        accessToken: accessToken,
+                        role:user[0].role
                     });
                 }else{
                     res.status(400).json({error: "The password entered is incorrect."});
@@ -34,7 +35,7 @@ const loginUser = async (req, res) => {
 }
 
 const registerUser = async (req, res) => {
-    const {username, password} = req.body;
+    const {username, password, role} = req.body;
     try {
         const query = await pool.query("SELECT * FROM users WHERE username= $1", [username]);
         const user = query.rows;
@@ -45,11 +46,12 @@ const registerUser = async (req, res) => {
                 }
                 const user = {
                     username,
-                    password: hash
+                    password: hash,
+                    role
                 };
 
-                pool.query("INSERT INTO users (username, password) VALUES ($1,$2)", 
-                [user.username, user.password], (err) => {
+                pool.query("INSERT INTO users (username, password, role) VALUES ($1,$2, $3)", 
+                [user.username, user.password, user.role], (err) => {
                 if (!err) {
                     res.status(200).send({ message: "User added to database, not verified" });
                 }
