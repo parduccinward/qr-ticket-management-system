@@ -45,7 +45,7 @@ const ClientForm = () => {
             <div className="client-form-image"></div>
             <div className="client-form-registration">
                 <form onSubmit={e => onSubmit(e)} encType="multipart/form-data">
-                    <h2 className="client-form-title">Registro Inti Raymi</h2>
+                    <h2 className="client-form-title">Registro</h2>
                     <p>
                         <input
                             type="text"

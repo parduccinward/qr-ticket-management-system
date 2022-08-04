@@ -67,7 +67,7 @@ const Login = () => {
         <div className="login-center">
         <section className="login-container">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Inti Raymi Admin</h1>
+            <h1>Login</h1>
             <form className="login-form"onSubmit={handleSubmit}>
                 <label className="login-label" htmlFor="username">Usuario:</label>
                 <input 
