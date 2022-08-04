@@ -8,12 +8,19 @@ const partyRoutes = require("./routes/parties");
 const salespersonRoutes = require("./routes/salespersons");
 const clientRoutes = require("./routes/clients");
 const userRoutes = require("./routes/users");
+const path = require("path");
+const PORT = process.env.PORT || 4000;
 
 
 const app = express();
 
 app.use(cors({credentials: true, origin: process.env.FRONTEND_ORIGIN}));
 app.use(express.json());
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(___dirname,"/frontend/build")));
+}
+
 app.use(cookieParser());
 app.use((req, res, next) => {
     console.log(req.path, req.method);
@@ -29,6 +36,6 @@ app.use("/api/parties",verifyJWT, partyRoutes);
 app.use("/api/salespersons",verifyJWT, salespersonRoutes);
 app.use("/api/clients", clientRoutes);
 
-app.listen(process.env.PORT, () => {
-    console.log("listening on port",process.env.PORT);
+app.listen(PORT, () => {
+    console.log("listening on port",PORT);
 })
