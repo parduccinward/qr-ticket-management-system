@@ -27,7 +27,6 @@ const AddSalesperson = () => {
         let result = parties.find(o => o.name === salesperson.party_id);
         salesperson.party_id = result.party_id;
         salesperson.party_name = result.name;
-        console.log(salesperson.party_name);
         await axiosPrivate.post("/api/salespersons",salesperson);
         navigate("/salespersons");
     }
