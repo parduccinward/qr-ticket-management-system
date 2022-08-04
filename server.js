@@ -14,11 +14,7 @@ const PORT = process.env.PORT || 4000;
 
 const app = express();
 
-if(process.env.NODE_ENV === "production"){
-    app.use(cors({credentials: true, origin: process.env.PRODUCTION_FRONTEND_ORIGIN}));
-}else{
-    app.use(cors({credentials: true, origin: process.env.FRONTEND_ORIGIN}));
-}
+app.use(cors({credentials: true, origin: [process.env.PRODUCTION_FRONTEND_ORIGIN, process.env.FRONTEND_ORIGIN]}));
 app.use(express.json());
 
 if(process.env.NODE_ENV === "production"){

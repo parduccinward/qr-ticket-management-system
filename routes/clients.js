@@ -4,13 +4,6 @@ const multer = require("multer");
 const path = require("path")
 const cors = require("cors");
 
-let origin;
-if(process.env.NODE_ENV === "production"){
-    origin = process.env.PRODUCTION_FRONTEND_ORIGIN;
-}else{
-    origin = process.env.FRONTEND_ORIGIN;
-}
-
 const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname))
@@ -57,7 +50,7 @@ router.put("/:id",verifyJWT, updateClient);
 
 router.get("/qr/:id",verifyJWT, cors({
     credentials: true,
-    origin: origin,
+    origin: [process.env.PRODUCTION_FRONTEND_ORIGIN, process.env.FRONTEND_ORIGIN],
     exposedHeaders: ['Content-Disposition'],
   }), downloadQR);
 
