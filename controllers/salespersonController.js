@@ -22,8 +22,12 @@ const getSalesperson = async (req, res) => {
 const createSalesperson = async (req, res) => {
     try {
         const {name,last_name, phone, email, party_name, party_id} = req.body;
-
-        const sale_url = process.env.FRONTEND_ORIGIN+"/form/"+name+" "+last_name;
+        let sale_url;
+        if(process.env.NODE_ENV === "production"){
+            sale_url = process.env.PRODUCTION_FRONTEND_ORIGIN+"/form/"+name+" "+last_name;
+        }else{
+            sale_url = process.env.FRONTEND_ORIGIN+"/form/"+name+" "+last_name;
+        }
 
         const encoded_url = encodeURI(sale_url);
 
