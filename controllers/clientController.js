@@ -2,6 +2,7 @@ const pool = require("../models/db");
 const {cloudinary} = require("../cloud/cloudinary");
 const QRCode = require('qrcode')
 const fs = require('fs');
+const path = require("path");
 
 const getClients = async (req, res) => {
     try {
@@ -95,8 +96,9 @@ const updateClient = async (req, res) => {
 const downloadQR = async (req, res) => {
     try {
         const {id} = req.params;
-        const qr = await QRCode.toFile(`./uploads/${id}.png`,id, {width:'400'});
-        const qrImage = `./uploads/${id}.png`
+        console.log(path.join(__dirname,"/../uploads"))
+        const qr = await QRCode.toFile(path.join(__dirname,`/../uploads/${id}.png`),id, {width:'400'});
+        const qrImage = path.join(__dirname,`/../uploads/${id}.png`)
         const stream = fs.createReadStream(qrImage);
         res.set({
             'Content-Disposition': `attachment; filename=${id}.png`,
