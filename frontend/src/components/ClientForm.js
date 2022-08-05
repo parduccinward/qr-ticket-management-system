@@ -42,7 +42,6 @@ const ClientForm = () => {
   return (
     <div className="form-layout">
         <div className="client-form-container">
-            <div className="client-form-image"></div>
             <div className="client-form-registration">
                 <form onSubmit={e => onSubmit(e)} encType="multipart/form-data">
                     <h2 className="client-form-title">Registro</h2>

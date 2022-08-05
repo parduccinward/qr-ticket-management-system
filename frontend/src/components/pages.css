@@ -195,6 +195,7 @@ select#gender{
     border-radius: 10px;
     background-color: black;
     color: white;
+    width: 125px;
 }
 
 button.btn.btn-link.m-2 {
