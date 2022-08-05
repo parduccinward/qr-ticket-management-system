@@ -5,7 +5,6 @@ const Greetings = () => {
   return (
     <div className="form-layout">
         <div className="client-form-container">
-            <div className="client-form-image"></div>
             <div className="client-form-registration">
                 <div className="greetings-text">
                     <h2 className="greetings-one">El registro ha sido exitoso!😉</h2>
