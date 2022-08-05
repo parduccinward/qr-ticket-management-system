@@ -36,6 +36,14 @@ app.use("/api/parties",verifyJWT, partyRoutes);
 app.use("/api/salespersons",verifyJWT, salespersonRoutes);
 app.use("/api/clients", clientRoutes);
 
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'frontend/build/index.html'), function(err) {
+      if (err) {
+        res.status(500).send(err)
+      }
+    })
+  })
+
 app.listen(PORT, () => {
     console.log("listening on port",PORT);
 })
