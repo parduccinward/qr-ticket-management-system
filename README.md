@@ -1,4 +1,4 @@
-# Event ticket management for Inti Raymi
+# Event QR ticket management System
 
 This dashboard allows admin to manage their clients, salespersons, events and payments.
 
