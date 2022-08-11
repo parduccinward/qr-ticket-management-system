@@ -12,18 +12,24 @@ This administration system allows you to manage the information about your event
 
 > This image describes the process of a customer going to an event.
 
+## Installation
 
-## Installing / Getting started
+Start the application by installing npm on both the root folder and the frontend folder, using the following commands:
 
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
+### Backend Start
 
 ```shell
-commands here
+npm i
+npm run dev
 ```
+The node server.js should start listening on port 4000.
+### Frontend Start
 
-Here you should say what actually happens when you execute the code above.
-
+```shell
+npm i
+npm start
+```
+The client should start in the browser at port 3000.
 ## Developing
 
 ### Built With
