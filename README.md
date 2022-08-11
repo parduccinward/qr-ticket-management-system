@@ -4,11 +4,7 @@
 
 ## Description
 
-Administration system to manage the information of events, salespersons and clients (CRUD), create a unique link for each salesperson to sell tickets and generate a QR ticket for each client  (npm crypto and QR-code) and security validation of each ticket. To carry out this project, we apply the PERN stack, creating a rest API with Express-Nodejs and a client with Reactjs. The choice of these technologies is to be able to solve the requirements and apply a relational database with PostgreSQL. Finally, we use Cloudinary to store payment receipts in the cloud.
-
-<a href="https://cloudinary.com/">Cloudinary</a>
-<a href="https://www.npmjs.com/package/crypto-js">Crypto</a>
-<a href="https://www.npmjs.com/package/qrcode">qrcode</a>
+This administration system allows you to manage the information about your events, salespersons and clients (CRUD). Also, you can create a unique link for each salesperson to sell tickets and generate a QR ticket for each client (npm <a href="https://www.npmjs.com/package/crypto-js">crypto</a> and <a href="https://www.npmjs.com/package/qrcode">qrcode</a>) and security validation of each ticket. To carry out this project, we apply the PERN stack, creating a rest API with Express-Nodejs and a client with Reactjs. The choice of these technologies is to be able to solve the requirements and apply a relational database with PostgreSQL. Finally, we use <a href="https://cloudinary.com/">Cloudinary</a> to store payment receipts in the cloud.
 
 
 
