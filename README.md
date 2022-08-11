@@ -12,61 +12,60 @@ This administration system allows you to manage the information about your event
 
 > This image describes the process of a customer going to an event.
 
-## Installation
+## Getting Started
 
-Start the application by installing npm on both the root folder and the frontend folder, using the following commands:
 
-### Backend Start
+### Built With
+
+- node: 16.15.0
+- npm: 8.5.5
+- express: 4.18.1
+- react: 18.2.0
+- pg: 8.7.3
+
+### Prerequisites
+
+1. Download and install <a href="https://nodejs.org/en/download/">Node.js</a>
+2. Download and install <a href="https://www.postgresql.org/download/">PostgreSQL</a> 
+3. Download and install <a href="https://www.postman.com/downloads//">Postman</a>
+
+
+### Installation
+
+First clone the repository with the following commands:
+
+```shell
+git clone https://github.com/parduccinward/qr-ticket-management-system.git
+cd qr-ticket-management-system/
+code .
+```
+
+Then start the application by installing npm on both the project root folder and the frontend folder, using the following commands:
+
+#### Backend Start
 
 ```shell
 npm i
 npm run dev
 ```
 The node server.js should start listening on port 4000.
-### Frontend Start
+#### Frontend Start
 
 ```shell
 npm i
 npm start
 ```
 The client should start in the browser at port 3000.
-## Developing
 
-### Built With
-List main libraries, frameworks used including versions (React, Angular etc...)
+#### Database Creation
 
-### Prerequisites
-What is needed to set up the dev environment. For instance, global dependencies or any other tools. include download links.
+#### User Creation
 
+#### Create Cloudinary account and get keys
 
-### Setting up Dev
+#### Create environment variables
 
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
-
-```shell
-git clone https://github.com/your/your-project.git
-cd your-project/
-packagemanager install
-```
-
-And state what happens step-by-step. If there is any virtual environment, local server or database feeder needed, explain here.
-
-### Building
-
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here. for example:
-
-```shell
-./configure
-make
-make install
-```
-
-Here again you should state what actually happens when the code above gets
-executed.
-
-### Deploying / Publishing
+### Deploying
 give instructions on how to build and release a new version
 In case there's some step you have to take that publishes this project to a
 server, this is the right time to state it.
@@ -89,4 +88,6 @@ Documents your database design and schemas, relations etc...
 ## Licensing
 
 State what the license is and how to find the text version of the license.
+
+## Acknowledgements
 
