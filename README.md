@@ -6,9 +6,10 @@
 
 This administration system allows you to manage the information about your events, salespersons and clients (CRUD). Also, you can create a unique link for each salesperson to sell tickets and generate a secure QR ticket for each client (npm <a href="https://www.npmjs.com/package/crypto-js">crypto</a> and <a href="https://www.npmjs.com/package/qrcode">qrcode</a>). I applied the <a href="https://www.geeksforgeeks.org/what-is-pern-stack/">PERN</a> stack to carry out this project, creating a rest API with Nodejs-Express and a client with Reactjs. I chose these technologies to meet the requirements and apply a relational database with PostgreSQL. Finally, I use <a href="https://cloudinary.com/">Cloudinary</a> to store payment receipts in the cloud.
 
-## System main flow
+## Project main process
 
 <img src="./images/qr-ticket-management-system-customer-flow-3.png" alt="Logo of the project" style="max-width: 100%;width: 700px;">
+
 > This image describes the process of a customer going to an event.
 
 
