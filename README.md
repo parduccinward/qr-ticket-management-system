@@ -59,6 +59,42 @@ The client should start in the browser at port 3000.
 
 #### Database Creation
 
+Depending on the operating system you are using, follow the following guidelines to enter PostgreSQL:
+
+- <a href="https://www.microfocus.com/documentation/idol/IDOL_12_0/MediaServer/Guides/html/English/Content/Getting_Started/Configure/_TRN_Set_up_PostgreSQL.htm">Windows Guide</a>
+- <a href="https://www.w3resource.com/PostgreSQL/connect-to-postgresql-database.php">Linux Guide</a>
+
+Once inside the psql command line, we create the database by executing the **create-database.sql** file contained in the models folder. Again, this is done depending on the operating system as follows:
+
+Linux
+```console
+
+postgres=# \i /yourpath/qr-ticket-management-system/models/create-database.sql
+
+```
+
+Windows
+```console
+
+postgres=# \i 'C:/yourpath/qr-ticket-management-system/models/create-database.sql'
+
+```
+
+After running this command, you should get this response:
+
+```console
+
+CREATE DATABASE
+You are now connected to database "ticketmanagement" as user "youruser"
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+
+```
+
+To check that all the tables were created correctly we can use the command \dt
+
 #### User Creation
 
 #### Create Cloudinary account and get keys
