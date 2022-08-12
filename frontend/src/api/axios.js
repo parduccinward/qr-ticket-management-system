@@ -3,7 +3,7 @@ import axios from "axios";
 let BASE_URL;
 
 if(process.env.NODE_ENV === "production"){
-    BASE_URL = 'https://inti-raymi-app.herokuapp.com/';
+    BASE_URL = 'https://qr-tms.herokuapp.com/';
 }else{
     BASE_URL = 'http://localhost:4000';
 }

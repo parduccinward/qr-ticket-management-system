@@ -87,7 +87,7 @@ const Login = () => {
                     value={password}
                     required
                     />
-                <button className="login-btn">Ingresar</button>
+                <button className="login-btn">Enter</button>
             </form>
         </section>
         </div>

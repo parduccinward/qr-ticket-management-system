@@ -30,7 +30,6 @@ input:focus::placeholder {
 }
 
 .client-form-image{
-    background-image: url(../../public/inti-raymi-banner.jpeg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
