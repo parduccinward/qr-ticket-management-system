@@ -9,7 +9,7 @@ const {
 
 const router = express.Router();
 
-router.post("/register", verifyJWT, registerUser);
+router.post("/register", registerUser);
 
 router.post("/login", loginUser);
 
