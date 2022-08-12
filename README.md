@@ -8,7 +8,7 @@ This administration system allows you to manage the information about your event
 
 ## Project main process
 
-<img src="./images/qr-ticket-management-system-customer-flow-3.png" alt="Logo of the project" style="max-width: 100%;width: 700px;">
+<img src="./images/qr-ticket-management-system-customer-flow-3.png" alt="Customer process flow" style="max-width: 100%;width: 700px;">
 
 > This image describes the process of a customer going to an event.
 
@@ -57,7 +57,7 @@ npm start
 ```
 The client should start in the browser at port 3000.
 
-#### Database Creation
+### Database Creation
 
 Depending on the operating system you are using, follow the following guidelines to enter PostgreSQL:
 
@@ -95,35 +95,107 @@ CREATE TABLE
 
 To check that all the tables were created correctly we can use the command \dt
 
-#### User Creation
+### User Creation
 
-#### Create Cloudinary account and get keys
+To create different users, use Postman to consume the **/api/auth/register** API endpoint, sending a JSON body:
 
-#### Create environment variables
 
-### Deploying
-give instructions on how to build and release a new version
-In case there's some step you have to take that publishes this project to a
-server, this is the right time to state it.
-
-```shell
-packagemanager deploy your-project -s server.com -u username -p password
+#### Create admin user
+Admin users can be created with the role 5150.
+```json
+{
+    "username": "admin",
+    "password": "12345",
+    "role": "5150"
+}
+```
+#### Create security guard user
+Security guards users can be created with the role 5150.
+```json
+{
+    "username": "security",
+    "password": "12345",
+    "role": "2001"
+}
 ```
 
-And again you'd need to tell what the previous code actually does.
+Make sure to momentarily disable the verify JWT middleware while creating users, in **./routes/users.js** as follows:
 
-## Configuration
+```js
+// from this
+router.post("/register", verifyJWT, registerUser);
 
-Here you should write what are all of the configurations a user can enter when using the project.
+// to this
+router.post("/register", registerUser);
+```
+
+### Create Cloudinary account and get keys
+
+In order for customers to securely upload their payment receipts, we use Cloudinary as a cloud repository. I highly recommend this approach because is free and secure.
+
+Create an account on the official Cloudinary <a href="https://cloudinary.com/users/register/free">registration</a> page. Then go to your dashboard and copy the following credentials:
+
+- Cloud Name
+- API Key
+- API Secret
+
+<img src="./images/cloudinary-keys.png" alt="cloudinary-keys" style="max-width: 100%;width: 800px;">
+
+
+### Create environment variables
+
+To complete the installation, we need to create an .env file in the root directory and enter the following credentials:
+
+```env
+FRONTEND_ORIGIN="http://localhost:3000"
+PORT=4000
+
+PGHOST="localhost"
+PGUSER=postgres
+PGDATABASE=ticketmanagement
+PGPASSWORD=*yourpostgrespwd
+PGPORT=5432
+
+ACCESS_TOKEN_SECRET=*youraccesstoken
+REFRESH_TOKEN_SECRET=*yourrefreshtoken
+
+CLOUDINARY_CLOUD_NAME=*yourcloudname
+CLOUDINARY_API_KEY=*yourcloudinaryapikey
+CLOUDINARY_API_SECRET=*yourcloudinaryapisecret
+```
+
+- The PG variables are the credentials you have in the PostgreSQL installation.
+- The Cloudinary variables are the ones we copied in the previous step.
+- Tokens are created using the following code one at a time for each token.
+
+We enter node by typing **node** in a terminal an then:
+```
+require("crypto").randomBytes(64).toString("hex");
+```
 
 ## Database
 
-Explaining what database (and version) has been used. Provide download links.
-Documents your database design and schemas, relations etc... 
+The following image corresponds to the entity relationship model of the project:
+
+<img src="./images/ERM Ticket System.png" alt="ERM Ticket System" style="width: 400px;">
+
+## ToDo List
+
+- [x] Create secure QRs
+- [x] Auth using JWT
+- [x] Create private routes
+- [ ] Responsive design
+- [ ] Validate fields on backend
+- [ ] Show number of clients for each Salesperson
 
 ## Licensing
 
-State what the license is and how to find the text version of the license.
+This project uses the MIT license, please see the LICENSE file for more information.
 
 ## Acknowledgements
 
+- <a href="https://github.com/gitdagray/react_login_form">Authentication, Axios and Accessibility - Dave Gray</a>
+- <a href="https://github.com/gitdagray/mongo_async_crud">NodeJS Tutorial Series - Dave Gray</a>
+- <a href="https://github.com/ousecTic/pern-todo-app">PERN Stack - Stoic Programmer</a>
+- <a href="https://github.com/iamshaunjp/MERN-Stack-Tutorial">MERN Stack - Net Ninja</a>
+- <a href="https://github.com/briancodex/react-sidebar-v1">React Sidebar - Briancodex</a>
