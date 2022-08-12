@@ -110,7 +110,7 @@ Admin users can be created with the role 5150.
 }
 ```
 #### Create security guard user
-Security guards users can be created with the role 5150.
+Security guards users can be created with the role 2001.
 ```json
 {
     "username": "security",
