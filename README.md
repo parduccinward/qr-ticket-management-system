@@ -10,10 +10,10 @@ This administration system allows you to manage the information about your event
 
 ### Link: <a href="https://qr-tms.herokuapp.com">https://qr-tms.herokuapp.com</a>
 
-#### role admin<br>
+#### login as user admin<br>
 username: admin<br>
 password: 12345<br>
-#### role security guard <br>
+#### login as user security guard <br>
 username: security <br>
 password: 12345<br>
 
