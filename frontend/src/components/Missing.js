@@ -5,9 +5,9 @@ const Missing = () => {
         <div className="login-center">
             <article style={{ padding: "100px" }}>
                 <h1>Oops!</h1>
-                <p>Pagina no encontrada</p>
+                <p>Page not found</p>
                 <div className="missing-link">
-                    <Link to="/">Volver al login</Link>
+                    <Link to="/">Back to login</Link>
                 </div>
             </article>
         </div>

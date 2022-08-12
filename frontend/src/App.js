@@ -7,7 +7,6 @@ import Dashboard from "./components/Dashboard";
 import Parties from "./components/Parties";
 import AddParty from "./components/AddParty";
 import AddSalesperson from "./components/AddSalesperson";
-import AddClient from "./components/AddClient";
 import EditParty from "./components/EditParty";
 import EditSalesperson from "./components/EditSalesperson";
 import EditClient from "./components/EditClient";
@@ -34,7 +33,6 @@ function App() {
           <Route path="salespersons/add" element={<AddSalesperson/>} />
           <Route path="salespersons/edit/:id" element={<EditSalesperson/>} />
           <Route path="clients" element={<Clients/>} />
-          <Route path="clients/add" element={<AddClient/>} />
           <Route path="clients/edit/:id" element={<EditClient/>} />
         </Route>
         <Route element={<RequireAuth allowedRoles={[2001]}/>}>

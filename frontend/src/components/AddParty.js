@@ -34,11 +34,11 @@ const AddParty = () => {
         <div className="content-container">
             
             <div className="add-party-container">
-                <h2 className="text-center mb-4">Agregar Fiesta</h2>
+                <h2 className="text-center mb-4">Add Event</h2>
                 <form onSubmit={e => onSubmit(e)}>
                     <section>
                         <p>
-                            <label htmlFor="party_name">Nombre de Fiesta</label>
+                            <label htmlFor="party_name">Event Name</label>
                             <input
                                 type="text"
                                 id="party_name"
@@ -49,7 +49,7 @@ const AddParty = () => {
                                 required/>
                         </p>
                         <p>
-                            <label htmlFor="sale_start_date">Inicio de venta</label>
+                            <label htmlFor="sale_start_date">Sale Start Date</label>
                             <input
                                 type="date"
                                 id="sale_start_date"
@@ -61,7 +61,7 @@ const AddParty = () => {
                         </p>
                     </section>
                     <p>
-                        <label htmlFor="sale_end_date">Fin de venta</label>
+                        <label htmlFor="sale_end_date">Sale End Date</label>
                         <input
                             type="date"
                             id="sale_end_date"
@@ -72,7 +72,7 @@ const AddParty = () => {
                             required/>
                     </p>
                     <p>
-                        <label htmlFor="party_date">Fecha fiesta</label>
+                        <label htmlFor="party_date">Event Date</label>
                         <input
                             type="date"
                             id="party_date"
@@ -83,7 +83,7 @@ const AddParty = () => {
                             required/>
                     </p>
                     <p>
-                        <label htmlFor="banner_url">URL Banner</label>
+                        <label htmlFor="banner_url">Website URL</label>
                         <input
                             type="text"
                             id="banner_url"
@@ -94,7 +94,7 @@ const AddParty = () => {
                             onChange={e => onInputChange(e)}
                             required/>
                     </p>
-                    <button className="btn btn-primary btn-block">Agregar Fiesta</button>
+                    <button className="btn btn-primary btn-block">Add Event</button>
                 </form>
             </div>
         </div>

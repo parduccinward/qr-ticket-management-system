@@ -11,10 +11,10 @@ function ModalQR({closeModal, clientData}) {
                 <button onClick={ () => closeModal(false)}> X </button>
             </div>
             <div className="title">
-                <h1>Datos del cliente</h1>
+                <h1>Client Data</h1>
             </div>
             <div className="body-client">
-            <label htmlFor="first_name">Nombre:</label>
+            <label htmlFor="first_name">Name:</label>
                 <input
                     type="text"
                     id="first_name"
@@ -22,7 +22,7 @@ function ModalQR({closeModal, clientData}) {
                     value={clientData.name}
                     readonly="readOnly"
                     disabled/>
-            <label htmlFor="last_name">Apellido:</label>
+            <label htmlFor="last_name">Last Name:</label>
                 <input
                     type="text"
                     id="last_name"
@@ -30,7 +30,7 @@ function ModalQR({closeModal, clientData}) {
                     value={clientData.last_name}
                     readonly="readOnly"
                     disabled/>
-            <label htmlFor="ci">Carnet de Identidad:</label>
+            <label htmlFor="ci">DNI:</label>
                 <input
                     type="text"
                     id="ci"
@@ -38,7 +38,7 @@ function ModalQR({closeModal, clientData}) {
                     value={clientData.ci}
                     readonly="readOnly"
                     disabled/>
-            <label htmlFor="phone">Telefono:</label>
+            <label htmlFor="phone">Phone:</label>
                 <input
                     type="text"
                     id="phone"
@@ -46,7 +46,7 @@ function ModalQR({closeModal, clientData}) {
                     value={clientData.phone}
                     readonly="readOnly"
                     disabled/>
-            <label htmlFor="deposit_date">Fecha de Registro:</label>
+            <label htmlFor="deposit_date">Registration date:</label>
                 <input
                     type="text"
                     id="deposit_date"
@@ -56,7 +56,7 @@ function ModalQR({closeModal, clientData}) {
                     disabled/>
             </div>
             <div className="footer">
-                <button onClick={ () => closeModal(false)}>Cerrar</button>
+                <button onClick={ () => closeModal(false)}>Close</button>
             </div>
         </div>
     </div>

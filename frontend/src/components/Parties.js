@@ -42,7 +42,7 @@ const Parties = () => {
     }
 
     const deleteParty = async id => {
-        const deleteConfirm = window.confirm('Estas seguro de querer eliminar este registro?');
+        const deleteConfirm = window.confirm('Are you sure you want to delete this record?');
         if(deleteConfirm){
             await axiosPrivate.delete(`/api/parties/${id}`);
             getParty();
@@ -51,7 +51,7 @@ const Parties = () => {
 
     function copy(text){
         navigator.clipboard.writeText(text)
-        alert("URL copiado!");
+        alert("URL copied!");
     }
 
   return (
@@ -60,19 +60,19 @@ const Parties = () => {
         <Navbar/>
         <div className= "party-table">
             <div className="party-first-line">
-                <h1>Fiestas</h1>
-                <Link to="./add"className="btn btn-success">Agregar Fiesta</Link>
+                <h1>Events</h1>
+                <Link to="./add"className="btn btn-success">Add Event</Link>
             </div>
             <table className="table table-striped">
                 <thead className="table-dark">
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Inicio de Venta</th>
-                    <th scope="col">Fin de Venta</th>
-                    <th scope="col">Fecha de fiesta</th>
-                    <th scope="col">Url banner</th>
-                    <th scope="col">Acción</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Sale Start Date</th>
+                    <th scope="col">Sale End Date</th>
+                    <th scope="col">Event Date</th>
+                    <th scope="col">Website URL</th>
+                    <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,8 +85,8 @@ const Parties = () => {
                            <td>{dayjs(data.party_date).format("DD/MMMM/YYYY")}</td>
                            <td className="banner-url"onClick={() => copy(data.banner_url)}>{data.banner_url}<FiIcons.FiCopy/></td>
                            <td>
-                               <Link to={`./edit/${data.party_id}`} className="btn btn-primary m-2">Editar</Link>
-                               <button className="btn btn-danger m-2" onClick={() => deleteParty(data.party_id)}>Eliminar</button>
+                               <Link to={`./edit/${data.party_id}`} className="btn btn-primary m-2">Edit</Link>
+                               <button className="btn btn-danger m-2" onClick={() => deleteParty(data.party_id)}>Delete</button>
                            </td>
                        </tr>
                    ))}

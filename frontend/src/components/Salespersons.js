@@ -41,7 +41,7 @@ const Salespersons = () => {
     }
 
     const deleteSalesperson = async id => {
-        const deleteConfirm = window.confirm('Estas seguro de querer eliminar este registro?');
+        const deleteConfirm = window.confirm('Are you sure you want to delete this record?');
         if(deleteConfirm){
             await axiosPrivate.delete(`/api/salespersons/${id}`);
             getSalesperson();
@@ -50,7 +50,7 @@ const Salespersons = () => {
 
     function copy(text){
         navigator.clipboard.writeText(text)
-        alert("URL copiado!");
+        alert("URL copied!");
       }
   return (
     <>
@@ -58,19 +58,19 @@ const Salespersons = () => {
       <Navbar/>
       <div className= "salesperson-table">
             <div className="salesperson-first-line">
-                <h1>Relacionadores</h1>
-                <Link to="./add"className="btn btn-success">Agregar Relacionador</Link>
+                <h1>Salespersons</h1>
+                <Link to="./add"className="btn btn-success">Add Salesperson</Link>
             </div>
             <table className="table table-striped">
                 <thead className="table-dark">
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">URL de Venta</th>
-                    <th scope="col">Fiesta</th>
-                    <th scope="col">Acción</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Sale URL</th>
+                    <th scope="col">Event</th>
+                    <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,8 +83,8 @@ const Salespersons = () => {
                            <td className="salesperson-url"onClick={() => copy(data.sale_url)}>{data.sale_url}<FiIcons.FiCopy/></td>
                            <td>{data.party_name}</td>
                            <td>
-                               <Link to={`./edit/${data.salesperson_id}`} className="btn btn-primary m-2">Editar</Link>
-                               <button className="btn btn-danger m-2" onClick={() => deleteSalesperson(data.salesperson_id)}>Eliminar</button>
+                               <Link to={`./edit/${data.salesperson_id}`} className="btn btn-primary m-2">Edit</Link>
+                               <button className="btn btn-danger m-2" onClick={() => deleteSalesperson(data.salesperson_id)}>Delete</button>
                            </td>
                        </tr>
                    ))}

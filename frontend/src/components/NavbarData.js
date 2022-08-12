@@ -4,19 +4,19 @@ import * as GiIcons from 'react-icons/gi';
 
 export const NavbarData = [
   {
-    title: 'Fiestas',
+    title: 'Events',
     path: '/parties',
     icon: <GiIcons.GiPartyHat />,
     cName: 'nav-text'
   },
   {
-    title: 'Relacionadores',
+    title: 'Salespersons',
     path: '/salespersons',
     icon: <GiIcons.GiTicket />,
     cName: 'nav-text'
   },
   {
-    title: 'Clientes',
+    title: 'Clients',
     path: '/clients',
     icon: <BsIcons.BsPeopleFill />,
     cName: 'nav-text'

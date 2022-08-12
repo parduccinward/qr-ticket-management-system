@@ -47,11 +47,11 @@ const EditClient = () => {
         <div className="content-container">
             
             <div className="add-client-container">
-                <h2 className="text-center mb-4">Editar Cliente</h2>
+                <h2 className="text-center mb-4">Edit Client</h2>
                 <form onSubmit={e => onSubmit(e)}>
                     <section>
                         <p>
-                            <label htmlFor="salesperson_name">Nombre de Cliente</label>
+                            <label htmlFor="salesperson_name">Client Name</label>
                             <input
                                 type="text"
                                 id="salesperson_name"
@@ -62,7 +62,7 @@ const EditClient = () => {
                                 required/>
                         </p>
                         <p>
-                            <label htmlFor="last_name">Apellido</label>
+                            <label htmlFor="last_name">Last Name</label>
                             <input
                                 type="text"
                                 id="last_name"
@@ -74,7 +74,7 @@ const EditClient = () => {
                         </p>
                     </section>
                     <p>
-                        <label htmlFor="phone">Telefono</label>
+                        <label htmlFor="phone">Phone</label>
                         <input
                             type="text"
                             id="phone"
@@ -85,7 +85,7 @@ const EditClient = () => {
                             required/>
                     </p>
                     <p>
-                        <label htmlFor="gender">Genero</label>
+                        <label htmlFor="gender">Gender</label>
                         <input
                             type="text"
                             id="gender"
@@ -96,7 +96,7 @@ const EditClient = () => {
                             required/>
                     </p>
                     <p>
-                        <label htmlFor="payment_url">URL de Pago</label>
+                        <label htmlFor="payment_url">Payment URL</label>
                         <input
                             type="text"
                             id="payment_url"
@@ -118,7 +118,7 @@ const EditClient = () => {
                             onChange={e => onInputChange(e)}
                             />
                     </p>
-                    <button className="btn btn-primary btn-block">Actualizar Cliente</button>
+                    <button className="btn btn-primary btn-block">Update Client</button>
                 </form>
             </div>
         </div>

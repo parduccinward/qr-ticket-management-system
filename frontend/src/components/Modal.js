@@ -31,13 +31,13 @@ function Modal({closeModal, clientId}) {
                 <button onClick={ () => closeModal(false)}> X </button>
             </div>
             <div className="title">
-                <h1>Codigo QR de {clientId.name}</h1>
+                <h1>{clientId.name}'s QR Code</h1>
             </div>
             <div className="body">
                 <QRCodeSVG value={clientId.qr_code} />
             </div>
             <div className="footer">
-                <button onClick={() => onClick()}>Descargar</button>
+                <button onClick={() => onClick()}>Download</button>
             </div>
         </div>
     </div>

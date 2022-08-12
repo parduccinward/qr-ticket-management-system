@@ -26,7 +26,7 @@ const ScanQR = () => {
       setOpenModal(true);
     } catch (err) {
       console.error(err.message)
-      alert("QR invalido!");
+      alert("Invalid QR!");
       setDecodedCode("");
     }
   }
@@ -37,8 +37,8 @@ const ScanQR = () => {
     <div className="login-center">
         <section className="login-container">
             <div className="decoded-qr-code">
-              <h1>Validar Entrada QR</h1>
-              <h5>Copia el codigo extraido del QR:</h5>
+              <h1>Validate QR Ticket</h1>
+              <h5>Copy the code extracted from the QR:</h5>
               <input
                   type="text"
                   id="qr_code"
@@ -46,9 +46,9 @@ const ScanQR = () => {
                   value={decodedCode}
                   readonly="readOnly"
                   disabled/>
-              <button className="btn btn-success"onClick={ () => copyToInput()}>Pegar texto</button>
+              <button className="btn btn-success"onClick={ () => copyToInput()}>Paste text</button>
             </div>
-            <button id="validate-qr"className="btn btn-success" onClick={ () => validateQR()}>Validar Entrada</button>
+            <button id="validate-qr"className="btn btn-success" onClick={ () => validateQR()}>Validate Ticket</button>
       </section>
     </div>
     </>

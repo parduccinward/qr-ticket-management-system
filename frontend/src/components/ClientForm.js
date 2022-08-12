@@ -34,23 +34,23 @@ const ClientForm = () => {
         formData.append("payment_url", selectedFile);
         formData.append("instagram", client.instagram);
         await axios.post(`/api/clients/${id}`,formData).then((res) => {
-            alert("Imagen subida correctamente");
+            alert("Image uploaded successfully!");
             navigate("/greetings");
           })
-          .catch((err) => alert("Error en la subida de Imagen"));
+          .catch((err) => alert("Error uploading the image"));
     }
   return (
     <div className="form-layout">
         <div className="client-form-container">
             <div className="client-form-registration">
                 <form onSubmit={e => onSubmit(e)} encType="multipart/form-data">
-                    <h2 className="client-form-title">Registro</h2>
+                    <h2 className="client-form-title">Register</h2>
                     <p>
                         <input
                             type="text"
                             id="salesperson_name"
                             className="client-form-input"
-                            placeholder="Nombre*"
+                            placeholder="Name*"
                             name="name"
                             value={name}
                             onChange={e => onInputChange(e)}
@@ -61,7 +61,7 @@ const ClientForm = () => {
                             type="text"
                             id="last_name"
                             className="client-form-input"
-                            placeholder="Apellido*"
+                            placeholder="Last Name*"
                             name="last_name"
                             value={last_name}
                             onChange={e => onInputChange(e)}
@@ -72,7 +72,7 @@ const ClientForm = () => {
                             type="text"
                             id="ci"
                             className="client-form-input"
-                            placeholder="CI*"
+                            placeholder="DNI*"
                             name="ci"
                             value={ci}
                             onChange={e => onInputChange(e)}
@@ -83,7 +83,7 @@ const ClientForm = () => {
                             type="text"
                             id="phone"
                             className="client-form-input"
-                            placeholder="Telefono*"
+                            placeholder="Phone*"
                             name="phone"
                             value={phone}
                             onChange={e => onInputChange(e)}
@@ -102,13 +102,13 @@ const ClientForm = () => {
                     </p>
                     <div className="form-last-line">
                         <select name="gender" id="gender" onChange={e => onInputChange(e)}required>
-                            <option defaultValue="" disabled selected>Genero*</option>
-                            <option defaultValue={gender}>Hombre</option>
-                            <option defaultValue={gender}>Mujer</option>
-                            <option defaultValue={gender}>No binario</option>
-                            <option defaultValue={gender}>Transgénero</option>
-                            <option defaultValue={gender}>Intersexual</option>
-                            <option defaultValue={gender}>Prefiero no decirlo</option>
+                            <option defaultValue="" disabled selected>Gender*</option>
+                            <option defaultValue={gender}>Male</option>
+                            <option defaultValue={gender}>Female</option>
+                            <option defaultValue={gender}>Non-binary</option>
+                            <option defaultValue={gender}>Transgender</option>
+                            <option defaultValue={gender}>Intersex</option>
+                            <option defaultValue={gender}>I prefer not to say</option>
                         </select>
                         <p className="payment-container">
                         <label className="myLabel">
@@ -119,11 +119,11 @@ const ClientForm = () => {
                                 value={undefined}
                                 onChange={(e) => setSelectedFile(e.target.files[0])}
                                 required/>
-                            <span>Subir captura de pago*</span>
+                            <span>Upload Payment*</span>
                         </label>
                         </p>
                     </div>
-                <button className="form-button">Enviar</button>
+                <button className="form-button">Send</button>
                 </form>
             </div>
         </div>

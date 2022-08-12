@@ -46,7 +46,7 @@ const Clients = () => {
     }
 
     const deleteClient = async id => {
-        const deleteConfirm = window.confirm('Estas seguro de querer eliminar este registro?');
+        const deleteConfirm = window.confirm('Are you sure you want to delete this record?');
         if(deleteConfirm){
             await axiosPrivate.delete(`/api/clients/${id}`);
             getClient();
@@ -65,21 +65,21 @@ const Clients = () => {
       <Navbar/>
       <div className= "client-table">
             <div className="client-first-line">
-                <h1>Clientes</h1>
+                <h1>Clients</h1>
             </div>
             <table className="table table-striped">
                 <thead className="table-dark">
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Genero</th>
-                    <th scope="col">URL de Pago</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Payment URL</th>
                     <th scope="col">Instagram</th>
-                    <th scope="col">Relacionador</th>
-                    <th scope="col">Pago</th>
-                    <th scope="col">Accion</th>
+                    <th scope="col">Salesperson</th>
+                    <th scope="col">Payment Date</th>
+                    <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -96,8 +96,8 @@ const Clients = () => {
                            <td>{dayjs(data.created_at).format("DD/MMMM/YYYY")}</td>
                            <td>
                                <button className="btn btn-link m-2" onClick={() => {setOpenModal(true);setClient(data)}}><i class="bi bi-qr-code bi-7x"></i></button>
-                               <Link to={`./edit/${data.client_id}`} className="btn btn-primary m-2">Editar</Link>
-                               <button className="btn btn-danger m-2" onClick={() => deleteClient(data.client_id)}>Eliminar</button>
+                               <Link to={`./edit/${data.client_id}`} className="btn btn-primary m-2">Edit</Link>
+                               <button className="btn btn-danger m-2" onClick={() => deleteClient(data.client_id)}>Delete</button>
                            </td>
                        </tr>
                    ))}

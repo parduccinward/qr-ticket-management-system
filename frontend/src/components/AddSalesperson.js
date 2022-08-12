@@ -64,11 +64,11 @@ const AddSalesperson = () => {
         <div className="content-container">
             
             <div className="add-salesperson-container">
-                <h2 className="text-center mb-4">Agregar Relacionador</h2>
+                <h2 className="text-center mb-4">Add Salesperson</h2>
                 <form onSubmit={e => onSubmit(e)}>
                     <section>
                         <p>
-                            <label htmlFor="salesperson_name">Nombre de Relacionador</label>
+                            <label htmlFor="salesperson_name">Name</label>
                             <input
                                 type="text"
                                 id="salesperson_name"
@@ -79,7 +79,7 @@ const AddSalesperson = () => {
                                 required/>
                         </p>
                         <p>
-                            <label htmlFor="last_name">Apellido</label>
+                            <label htmlFor="last_name">Last Name</label>
                             <input
                                 type="text"
                                 id="last_name"
@@ -91,7 +91,7 @@ const AddSalesperson = () => {
                         </p>
                     </section>
                     <p>
-                        <label htmlFor="phone">Telefono</label>
+                        <label htmlFor="phone">Phone</label>
                         <input
                             type="text"
                             id="phone"
@@ -114,13 +114,13 @@ const AddSalesperson = () => {
                     </p>
                     <p>
                         <select value={party_id}className="form-select" name="party_id" id="party_id" onChange={e => onInputChange(e)}required>
-                            <option value="" disabled selected>Fiesta*</option>
+                            <option value="" disabled selected>Event*</option>
                             {parties?.map((data)=>(
                                 <option>{data.name}</option>
                             ))}
                         </select>
                     </p>
-                    <button className="btn btn-primary btn-block">Agregar Relacionador</button>
+                    <button className="btn btn-primary btn-block">Add Salesperson</button>
                 </form>
             </div>
         </div>

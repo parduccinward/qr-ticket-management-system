@@ -45,11 +45,11 @@ const EditSalesperson = () => {
         <div className="content-container">
             
             <div className="add-salesperson-container">
-                <h2 className="text-center mb-4">Editar Relacionador</h2>
+                <h2 className="text-center mb-4">Edit Salesperson</h2>
                 <form onSubmit={e => onSubmit(e)}>
                     <section>
                         <p>
-                            <label htmlFor="salesperson_name">Nombre de Relacionador</label>
+                            <label htmlFor="salesperson_name">Salesperson Name</label>
                             <input
                                 type="text"
                                 id="salesperson_name"
@@ -60,7 +60,7 @@ const EditSalesperson = () => {
                                 required/>
                         </p>
                         <p>
-                            <label htmlFor="last_name">Apellido</label>
+                            <label htmlFor="last_name">Last Name</label>
                             <input
                                 type="text"
                                 id="last_name"
@@ -72,7 +72,7 @@ const EditSalesperson = () => {
                         </p>
                     </section>
                     <p>
-                        <label htmlFor="phone">Telefono</label>
+                        <label htmlFor="phone">Phone</label>
                         <input
                             type="text"
                             id="phone"
@@ -94,7 +94,7 @@ const EditSalesperson = () => {
                             required/>
                     </p>
                     <p>
-                        <label htmlFor="sale_url">URL de Venta</label>
+                        <label htmlFor="sale_url">Payment URL</label>
                         <input
                             type="text"
                             id="sale_url"
@@ -105,7 +105,7 @@ const EditSalesperson = () => {
                             onChange={e => onInputChange(e)}
                             required/>
                     </p>
-                    <button className="btn btn-primary btn-block">Actualizar Relacionador</button>
+                    <button className="btn btn-primary btn-block">Update Salesperson</button>
                 </form>
             </div>
         </div>

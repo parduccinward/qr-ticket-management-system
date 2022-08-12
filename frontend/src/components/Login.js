@@ -69,7 +69,7 @@ const Login = () => {
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Login</h1>
             <form className="login-form"onSubmit={handleSubmit}>
-                <label className="login-label" htmlFor="username">Usuario:</label>
+                <label className="login-label" htmlFor="username">User:</label>
                 <input 
                     type="text"
                     id="username"
@@ -79,7 +79,7 @@ const Login = () => {
                     value={username}
                     required
                     />
-                <label className="login-label" htmlFor="password">Contraseña:</label>
+                <label className="login-label" htmlFor="password">Password:</label>
                 <input 
                     type="password"
                     id="password"

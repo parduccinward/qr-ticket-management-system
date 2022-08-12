@@ -7,9 +7,9 @@ const Greetings = () => {
         <div className="client-form-container">
             <div className="client-form-registration">
                 <div className="greetings-text">
-                    <h2 className="greetings-one">El registro ha sido exitoso!😉</h2>
-                    <h5 className="greetings-two">Te haremos llegar tu entrada al evento cuanto antes🚀</h5>
-                    <h5 className="greetings-three">Puedes cerrar la pagina ahora. Nos vemos pronto!🎉🎉</h5>
+                    <h2 className="greetings-one">Registration has been successful!😉</h2>
+                    <h5 className="greetings-two">We will send you your ticket to the event as soon as possible🚀</h5>
+                    <h5 className="greetings-three">You can close the page now. See you soon!🎉🎉</h5>
                 </div>
             </div>
         </div>

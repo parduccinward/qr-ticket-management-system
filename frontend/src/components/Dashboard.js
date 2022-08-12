@@ -6,7 +6,7 @@ const Dashboard = () => {
         <div className="layout-container">
             <Navbar/>
             <section className="dashboard-message">
-                <h1>Bienvenido de vuelta! 👋</h1>
+                <h1>Welcome back! 👋</h1>
             </section>
         </div>
     )
